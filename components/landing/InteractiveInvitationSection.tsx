@@ -1,9 +1,18 @@
+"use client";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import { interactiveInvitationContent } from "./data/landing-data";
 import { InteractivePhoneDemo } from "./InteractivePhoneDemo";
+import { ContactModal } from "./ContactModal";
 
 export function InteractiveInvitationSection() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const handleModalContact = () => {
+    setIsContactModalOpen(true);
+  };
+
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,7 +29,10 @@ export function InteractiveInvitationSection() {
               {interactiveInvitationContent.highlight}
             </span>
           </p>
-          <Button className="bg-green-500 hover:bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-lg">
+          <Button
+            onClick={handleModalContact}
+            className="bg-green-500 hover:bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
+          >
             <MessageCircle className="mr-2 w-5 h-5" />
             {interactiveInvitationContent.buttonText}
           </Button>
@@ -51,6 +63,12 @@ export function InteractiveInvitationSection() {
           </p>
         </div>
       </div>
+
+      {/* Modal de contacto */}
+      <ContactModal 
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
     </section>
   );
 }

@@ -1,8 +1,17 @@
+"use client";
+import { useState } from "react";
 import { Button } from "@/components/ui/button"
 import { MessageCircle } from "lucide-react"
 import { ctaContent } from "./data/landing-data"
+import { ContactModal } from "./ContactModal";
 
 export function CTASection() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const handleModalContact = () => {
+    setIsContactModalOpen(true);
+  };
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4 text-center">
@@ -19,7 +28,9 @@ export function CTASection() {
         </p>
         <p className="text-lg text-pink-500 mb-8">{ctaContent.consultText}</p>
 
-        <Button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 text-lg rounded-lg mb-12">
+        <Button 
+          onClick={handleModalContact}
+        className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 text-lg rounded-lg mb-12">
           <MessageCircle className="mr-2" />
           {ctaContent.buttonText}
         </Button>
@@ -34,6 +45,12 @@ export function CTASection() {
 
         <h4 className="text-xl md:text-2xl font-bold text-gray-800">{ctaContent.finalTitle}</h4>
       </div>
+
+      {/* Modal de contacto */}
+      <ContactModal 
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
     </section>
   )
 } 
