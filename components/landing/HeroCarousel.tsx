@@ -32,10 +32,17 @@ export function HeroCarousel({ children, className = "" }: HeroCarouselProps) {
   }, [isClient])
 
   const nextSlide = useCallback(() => {
-    if (isTransitioning) return
+    console.log('nextSlide called', { isTransitioning, isClient })
+    if (isTransitioning) {
+      console.log('Blocked by isTransitioning')
+      return
+    }
     setIsTransitioning(true)
     setCurrentSlide((prev) => (prev + 1) % heroImages.length)
-    setTimeout(() => setIsTransitioning(false), carouselConfig.transitionDuration)
+    setTimeout(() => {
+      console.log('Resetting isTransitioning to false')
+      setIsTransitioning(false)
+    }, carouselConfig.transitionDuration)
   }, [isTransitioning])
 
   // Auto-play functionality - solo activo en cliente
@@ -49,11 +56,32 @@ export function HeroCarousel({ children, className = "" }: HeroCarouselProps) {
     return () => clearInterval(interval)
   }, [currentSlide, isPlaying, isClient, nextSlide])
 
+  // Fallback de seguridad para isTransitioning
+  useEffect(() => {
+    if (!isClient) return
+    
+    const safetyTimeout = setTimeout(() => {
+      if (isTransitioning) {
+        console.log('Safety timeout: resetting isTransitioning')
+        setIsTransitioning(false)
+      }
+    }, carouselConfig.transitionDuration + 1000) // 1 segundo extra de seguridad
+
+    return () => clearTimeout(safetyTimeout)
+  }, [isTransitioning, isClient])
+
   const prevSlide = useCallback(() => {
-    if (isTransitioning) return
+    console.log('prevSlide called', { isTransitioning, isClient })
+    if (isTransitioning) {
+      console.log('Blocked by isTransitioning')
+      return
+    }
     setIsTransitioning(true)
     setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length)
-    setTimeout(() => setIsTransitioning(false), carouselConfig.transitionDuration)
+    setTimeout(() => {
+      console.log('Resetting isTransitioning to false')
+      setIsTransitioning(false)
+    }, carouselConfig.transitionDuration)
   }, [isTransitioning])
 
   const goToSlide = useCallback((index: number) => {
@@ -123,20 +151,32 @@ export function HeroCarousel({ children, className = "" }: HeroCarouselProps) {
       {carouselConfig.showNavigation && heroImages.length > 1 && isClient && (
         <>
           <button 
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-all duration-300 hover:scale-110 z-30 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-all duration-300 hover:scale-110 z-50 disabled:opacity-50 disabled:cursor-not-allowed p-2 md:p-3 rounded-full bg-black/20 backdrop-blur-sm touch-manipulation"
             onClick={prevSlide}
+            onTouchStart={(e) => {
+              e.preventDefault()
+              console.log('Touch start on prev button')
+              prevSlide()
+            }}
             disabled={isTransitioning}
             aria-label="Imagen anterior"
+            style={{ minWidth: '44px', minHeight: '44px' }} // Mínimo recomendado para touch
           >
-            <ChevronLeft size={40} />
+            <ChevronLeft size={24} className="md:w-10 md:h-10" />
           </button>
           <button 
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-all duration-300 hover:scale-110 z-30 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-all duration-300 hover:scale-110 z-50 disabled:opacity-50 disabled:cursor-not-allowed p-2 md:p-3 rounded-full bg-black/20 backdrop-blur-sm touch-manipulation"
             onClick={nextSlide}
+            onTouchStart={(e) => {
+              e.preventDefault()
+              console.log('Touch start on next button')
+              nextSlide()
+            }}
             disabled={isTransitioning}
             aria-label="Siguiente imagen"
+            style={{ minWidth: '44px', minHeight: '44px' }} // Mínimo recomendado para touch
           >
-            <ChevronRight size={40} />
+            <ChevronRight size={24} className="md:w-10 md:h-10" />
           </button>
         </>
       )}
