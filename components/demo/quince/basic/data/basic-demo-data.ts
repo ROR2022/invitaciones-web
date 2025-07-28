@@ -80,7 +80,7 @@ export const basicDemoData = {
   },
 
   demo: {
-    badge: "🎭 DEMO - Paquete Básico ($499)",
+    badge: "🎭 DEMO - Paquete Básico ($299)",
     description: "Esta es una demostración del paquete básico",
     features: [
       "Cuenta Regresiva",
@@ -92,7 +92,7 @@ export const basicDemoData = {
     cta: {
       title: "¿Te gusta este paquete?",
       subtitle: "Incluye todas las características esenciales para tu evento",
-      buttonText: "Contratar Paquete Básico - $499",
+      buttonText: "Contratar Paquete Básico - $299",
       link: "/#pricing"
     }
   }

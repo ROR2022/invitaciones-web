@@ -7,7 +7,7 @@ export const vipDemoData = {
   
   // Sobreescribir información demo con datos VIP
   demo: {
-    badge: "👑 DEMO - Paquete VIP ($899)",
+    badge: "👑 DEMO - Paquete VIP ($699)",
     description: "¡El más exclusivo! - Experiencia completa con logística del evento",
     features: [
       ...premiumDemoData.demo.features,
@@ -18,7 +18,7 @@ export const vipDemoData = {
     cta: {
       title: "¿Quieres la experiencia VIP completa?",
       subtitle: "El paquete más exclusivo - Incluye TODO + logística completa del evento",
-      buttonText: "Contratar Paquete VIP - $899",
+      buttonText: "Contratar Paquete VIP - $699",
       link: "/#pricing"
     }
   },

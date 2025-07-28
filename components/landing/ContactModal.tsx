@@ -18,6 +18,7 @@ const contactSchema = z.object({
     .min(2, contactFormData.validation.name.minLength)
     .max(50, contactFormData.validation.name.maxLength),
   eventType: z.string().min(1, contactFormData.validation.eventType.required),
+  package: z.string().min(1, contactFormData.validation.package.required),
   description: z.string()
     .min(10, contactFormData.validation.description.minLength)
     .max(200, contactFormData.validation.description.maxLength)
@@ -46,11 +47,13 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     defaultValues: {
       name: "",
       eventType: "",
+      package: "",
       description: ""
     }
   });
 
   const selectedEventType = watch("eventType");
+  const selectedPackage = watch("package");
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
@@ -60,6 +63,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       const message = contactFormData.whatsapp.messageTemplate(
         data.name,
         data.eventType,
+        data.package,
         data.description
       );
       
@@ -168,6 +172,62 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </Select>
             {errors.eventType && (
               <p className="text-sm text-red-500">{errors.eventType.message}</p>
+            )}
+          </div>
+
+          {/* Paquete de interés */}
+          <div className="space-y-2">
+            <Label htmlFor="package" className="text-sm font-medium text-gray-700">
+              {contactFormData.form.packageLabel}
+            </Label>
+            <Select
+              value={selectedPackage}
+              onValueChange={(value) => setValue("package", value)}
+              disabled={isSubmitting}
+            >
+              <SelectTrigger className={`${errors.package ? 'border-red-500' : 'border-gray-300'}`}>
+                <SelectValue placeholder={contactFormData.form.packagePlaceholder} />
+              </SelectTrigger>
+              <SelectContent>
+                {contactFormData.packages.map((packageOption) => (
+                  <SelectItem key={packageOption.value} value={packageOption.value}>
+                    <div className="flex items-center justify-between w-full">
+                      <span className="flex items-center gap-2">
+                        <span>{packageOption.icon}</span>
+                        <span>{packageOption.label}</span>
+                      </span>
+                      <span className="text-sm font-semibold text-green-600 ml-2">
+                        {packageOption.price}
+                      </span>
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {errors.package && (
+              <p className="text-sm text-red-500">{errors.package.message}</p>
+            )}
+            
+            {/* Información del paquete seleccionado */}
+            {selectedPackage && (
+              <div className="mt-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-blue-600 font-semibold">
+                    {contactFormData.packages.find(p => p.value === selectedPackage)?.label}
+                  </span>
+                  <span className="text-green-600 font-bold">
+                    {contactFormData.packages.find(p => p.value === selectedPackage)?.price}
+                  </span>
+                </div>
+                <ul className="text-xs text-blue-700 space-y-1">
+                  {contactFormData.packages.find(p => p.value === selectedPackage)?.features.map((feature, index) => (
+                    <li key={index} className="flex items-center gap-1">
+                      <span className="text-green-500">✓</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
           </div>
 

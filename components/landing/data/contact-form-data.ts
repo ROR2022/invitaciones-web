@@ -12,21 +12,48 @@ export const contactFormData = {
     { value: "otro", label: "Otro", icon: "🎉" }
   ],
   
+  // Paquetes disponibles
+  packages: [
+    { 
+      value: "basico", 
+      label: "Paquete Básico", 
+      icon: "📱",
+      price: "$299",
+      features: ["Cuenta regresiva", "Información del evento", "Confirmación de asistencia", "Opciones de regalo", "Código de vestimenta"]
+    },
+    { 
+      value: "premium", 
+      label: "Paquete Premium", 
+      icon: "✨",
+      price: "$499",
+      features: ["Todo del Básico", "Música personalizada", "Galería de fotos", "Lista de padrinos", "Invitación completa"]
+    },
+    { 
+      value: "vip", 
+      label: "Paquete VIP", 
+      icon: "👑",
+      price: "$699",
+      features: ["Todo del Premium", "Hospedaje recomendado", "Itinerario completo", "Pases de invitados", "Playlist múltiple"]
+    }
+  ],
+  
   // Configuración del WhatsApp
   whatsapp: {
     phone: "7777937484",
     countryCode: "52", // México
-    messageTemplate: (name: string, eventType: string, description: string) => {
+    messageTemplate: (name: string, eventType: string, packageType: string, description: string) => {
       const eventTypeLabel = contactFormData.eventTypes.find(t => t.value === eventType)?.label || eventType;
+      const packageInfo = contactFormData.packages.find(p => p.value === packageType);
       
       return `¡Hola! Me interesa una invitación digital personalizada.
 
 📋 Información del evento:
 • Nombre: ${name}
 • Tipo de evento: ${eventTypeLabel}
+• Paquete de interés: ${packageInfo?.label || packageType} ${packageInfo?.price ? `(${packageInfo.price})` : ''}
 • Descripción: ${description}
 
-🎯 Me gustaría conocer más sobre sus paquetes y precios.
+🎯 Me gustaría conocer más sobre este paquete y confirmar disponibilidad.
 
 ¡Gracias!`;
     }
@@ -42,6 +69,9 @@ export const contactFormData = {
     eventType: {
       required: "Por favor selecciona el tipo de evento"
     },
+    package: {
+      required: "Por favor selecciona un paquete"
+    },
     description: {
       required: "Por favor describe tu evento",
       minLength: "La descripción debe tener al menos 10 caracteres",
@@ -55,6 +85,8 @@ export const contactFormData = {
     namePlaceholder: "Ej: María González",
     eventTypeLabel: "Tipo de evento",
     eventTypePlaceholder: "Selecciona el tipo de evento",
+    packageLabel: "Paquete de interés",
+    packagePlaceholder: "Selecciona el paquete que te interesa",
     descriptionLabel: "Descripción de tu evento",
     descriptionPlaceholder: "Cuéntanos sobre tu evento, fecha, lugar, tema, etc.",
     submitButton: "Enviar WhatsApp",

@@ -7,7 +7,7 @@ export const premiumDemoData = {
   
   // Sobreescribir información demo con datos premium
   demo: {
-    badge: "🌟 DEMO - Paquete Premium ($699)",
+    badge: "🌟 DEMO - Paquete Premium ($499)",
     description: "¡La más solicitada! - Incluye música, galería y padrinos",
     features: [
       ...basicDemoData.demo.features,
@@ -18,7 +18,7 @@ export const premiumDemoData = {
     cta: {
       title: "¿Te encanta el paquete Premium?",
       subtitle: "El más solicitado - Incluye TODAS las características esenciales + 3 premium exclusivas",
-      buttonText: "Contratar Paquete Premium - $699",
+      buttonText: "Contratar Paquete Premium - $499",
       link: "/#pricing"
     }
   },

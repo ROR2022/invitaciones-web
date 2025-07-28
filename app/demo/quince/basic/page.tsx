@@ -1,6 +1,8 @@
+"use client";
+
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Check } from 'lucide-react'
+import { ArrowRight, Check } from 'lucide-react'
 import {
   BasicHero,
   BasicCountdown, 
@@ -9,8 +11,16 @@ import {
   BasicGiftOptions,
   basicDemoData
 } from '@/components/demo/quince/basic'
+import { useState } from 'react';
+import { ContactModal } from '@/components/landing/ContactModal';
 
 export default function BasicQuinceDemoPage() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const handleModalContact = () => {
+    setIsContactModalOpen(true);
+  };
+
   return (
     <main className="min-h-screen font-playfair">
       {/* Componentes incluidos en el paquete básico */}
@@ -50,11 +60,13 @@ export default function BasicQuinceDemoPage() {
             <Button 
               asChild 
               size="lg" 
+              onClick={handleModalContact}
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg"
             >
-              <Link href={basicDemoData.demo.cta.link}>
+              <div className="flex items-center gap-2 cursor-pointer">
                 {basicDemoData.demo.cta.buttonText}
-              </Link>
+                <ArrowRight className="w-4 h-4" />
+              </div>
             </Button>
             
             <Button 
@@ -79,6 +91,12 @@ export default function BasicQuinceDemoPage() {
           </div>
         </div>
       </section>
+
+      {/* Modal de contacto */}
+      <ContactModal 
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
     </main>
   )
 } 

@@ -1,6 +1,8 @@
+"use client";
+
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Check, Star } from 'lucide-react'
+import { ArrowRight, Check, Star } from 'lucide-react'
 import {
   PremiumHero,
   PremiumInvitation,
@@ -14,8 +16,16 @@ import {
   BasicGiftOptions,
   premiumDemoData
 } from '@/components/demo/quince/premium'
+import { useState } from 'react';
+import { ContactModal } from '@/components/landing/ContactModal';
 
 export default function PremiumQuinceDemoPage() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const handleModalContact = () => {
+    setIsContactModalOpen(true);
+  };
+
   return (
     <main className="min-h-screen font-playfair">
       {/* Music Player premium (invisible, maneja el audio) */}
@@ -62,7 +72,7 @@ export default function PremiumQuinceDemoPage() {
             {/* Básico */}
             <div className="bg-white rounded-xl p-6 shadow-md border border-gray-200">
               <h3 className="text-xl font-semibold mb-4 text-gray-700">Paquete Básico</h3>
-              <div className="text-2xl font-bold text-gray-600 mb-4">$499</div>
+              <div className="text-2xl font-bold text-gray-600 mb-4">$299</div>
               <p className="text-sm text-gray-600 mb-4">5 características esenciales</p>
               <div className="space-y-2 text-sm text-left">
                 {premiumDemoData.demo.features.slice(0, 5).map((feature, index) => (
@@ -80,7 +90,7 @@ export default function PremiumQuinceDemoPage() {
                 ¡LA MÁS SOLICITADA!
               </div>
               <h3 className="text-xl font-semibold mb-4 text-purple-700">Paquete Premium</h3>
-              <div className="text-2xl font-bold text-purple-600 mb-4">$699</div>
+              <div className="text-2xl font-bold text-purple-600 mb-4">$499</div>
               <p className="text-sm text-purple-700 mb-4">8 características (+3 premium exclusivas)</p>
               <div className="space-y-2 text-sm text-left">
                 {premiumDemoData.demo.features.map((feature, index) => (
@@ -101,11 +111,13 @@ export default function PremiumQuinceDemoPage() {
             <Button 
               asChild 
               size="lg" 
+              onClick={handleModalContact}
               className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg shadow-lg"
             >
-              <Link href={premiumDemoData.demo.cta.link}>
+              <div className="flex items-center gap-2 cursor-pointer">
                 {premiumDemoData.demo.cta.buttonText}
-              </Link>
+                <ArrowRight className="w-4 h-4" />
+              </div>
             </Button>
             
             <Button 
@@ -149,6 +161,12 @@ export default function PremiumQuinceDemoPage() {
           </div>
         </div>
       </section>
+
+      {/* Modal de contacto */}
+      <ContactModal 
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
     </main>
   )
 } 
