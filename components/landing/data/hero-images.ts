@@ -10,7 +10,7 @@ export interface HeroImage {
 export const heroImages: HeroImage[] = [
   {
     id: 'hero-boda-1',
-    src: '/images/boda/boda1.jpeg',
+    src: '/images/boda/boda8.jpeg',
     alt: 'Elegante invitación de boda digital',
     title: 'Invitaciones',
     subtitle: 'DE BODA',
