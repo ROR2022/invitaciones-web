@@ -15,7 +15,7 @@ export const features = [
 export const plans = [
   {
     name: "BASIC",
-    price: "$499",
+    price: "$299",
     currency: "PESOS",
     features: [
       "Cuenta Regresiva",
@@ -28,7 +28,7 @@ export const plans = [
   },
   {
     name: "PREMIUM",
-    price: "$699",
+    price: "$499",
     currency: "PESOS",
     badge: "¡La más solicitada!",
     features: [
@@ -45,7 +45,7 @@ export const plans = [
   },
   {
     name: "VIP",
-    price: "$899",
+    price: "$699",
     currency: "PESOS",
     features: [
       "Cuenta Regresiva",
@@ -106,7 +106,7 @@ export const ctaContent = {
 export const footerContent = {
   copyright: "INVITACIONES WEB MX © 2025. TODOS LOS DERECHOS RESERVADOS.",
   links: [
-    { text: "Aviso de Privacidad", href: "#" },
-    { text: "Términos y Condiciones", href: "#" }
+    { text: "Aviso de Privacidad", href: "/aviso-privacidad" },
+    { text: "Términos y Condiciones", href: "/terminos-condiciones" }
   ]
 } 
