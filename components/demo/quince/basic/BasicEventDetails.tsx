@@ -6,6 +6,17 @@ import { Calendar, Clock, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { basicDemoData } from "./data/basic-demo-data"
 
+// Función helper para abrir Google Maps
+const openInMaps = (address: string) => {
+  try {
+    const encodedAddress = encodeURIComponent(address)
+    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`
+    window.open(mapsUrl, '_blank')
+  } catch (error) {
+    console.error('Error al abrir Google Maps:', error)
+  }
+}
+
 export function BasicEventDetails() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, amount: 0.3 })
@@ -50,7 +61,11 @@ export function BasicEventDetails() {
             <p className="text-lg">{basicDemoData.event.ceremony.time}</p>
             <p className="text-lg mt-2">{basicDemoData.event.ceremony.venue}</p>
             <p className="text-sm mt-1">{basicDemoData.event.ceremony.address}</p>
-            <Button variant="outline" className="mt-4 border-primary text-primary hover:bg-primary hover:text-white">
+            <Button 
+              variant="outline" 
+              className="mt-4 border-primary text-primary hover:bg-primary hover:text-white"
+              onClick={() => openInMaps(basicDemoData.event.ceremony.address)}
+            >
               IR A MAPS
             </Button>
           </div>
@@ -61,7 +76,11 @@ export function BasicEventDetails() {
             <p className="text-lg">{basicDemoData.event.party.time}</p>
             <p className="text-lg mt-2">{basicDemoData.event.party.venue}</p>
             <p className="text-sm mt-1">{basicDemoData.event.party.address}</p>
-            <Button variant="outline" className="mt-4 border-primary text-primary hover:bg-primary hover:text-white">
+            <Button 
+              variant="outline" 
+              className="mt-4 border-primary text-primary hover:bg-primary hover:text-white"
+              onClick={() => openInMaps(basicDemoData.event.party.address)}
+            >
               IR A MAPS
             </Button>
           </div>
