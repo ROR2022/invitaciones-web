@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useCallback } from "react"
 import { useMusicContext } from "@/context/music-context"
 import { vipDemoData } from "./data/vip-demo-data"
 
@@ -60,7 +60,7 @@ export function VipMusicPlayer() {
   }, [isPlaying, isClient])
 
   // Función para cambiar de track (para uso futuro)
-  const changeTrack = (trackPath: string) => {
+  const changeTrack = useCallback((trackPath: string) => {
     if (!isClient || !audioRef.current) return
 
     const wasPlaying = !audioRef.current.paused
@@ -72,17 +72,22 @@ export function VipMusicPlayer() {
         console.error("❌ Error cambiando track VIP:", error)
       })
     }
-  }
+  }, [isClient])
 
   // Exponer función para uso externo (opcional)
   useEffect(() => {
     if (isClient) {
-      (window as any).vipMusicPlayer = {
+      (window as typeof window & { 
+        vipMusicPlayer?: {
+          changeTrack: (trackPath: string) => void;
+          audioRef: HTMLAudioElement | null;
+        }
+      }).vipMusicPlayer = {
         changeTrack,
         audioRef: audioRef.current
       }
     }
-  }, [isClient])
+  }, [isClient, changeTrack])
 
   return null
 } 

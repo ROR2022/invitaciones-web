@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useCallback } from 'react'
+import Image from 'next/image'
 import { X, ChevronLeft, ChevronRight, Heart } from 'lucide-react'
 import { premiumDemoData } from './data/premium-demo-data'
 
@@ -76,9 +77,11 @@ export function PremiumGallery() {
               className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105"
               onClick={() => openImage(index)}
             >
-              <img
+              <Image
                 src={image.src}
                 alt={image.alt}
+                width={400}
+                height={256}
                 className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
               />
               
@@ -103,9 +106,11 @@ export function PremiumGallery() {
           <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
             <div className="relative max-w-4xl max-h-full">
               {/* Imagen */}
-              <img
+              <Image
                 src={premiumDemoData.gallery.images[currentImageIndex].src}
                 alt={premiumDemoData.gallery.images[currentImageIndex].alt}
+                width={800}
+                height={600}
                 className="max-w-full max-h-[80vh] object-contain rounded-lg"
               />
               

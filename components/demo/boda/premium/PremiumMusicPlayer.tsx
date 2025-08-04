@@ -1,7 +1,6 @@
 "use client"
 
 import { useMusicContext } from '@/context/music-context'
-import { premiumDemoData } from './data/premium-demo-data'
 
 export function PremiumMusicPlayer() {
   const { isPlaying, togglePlay } = useMusicContext()

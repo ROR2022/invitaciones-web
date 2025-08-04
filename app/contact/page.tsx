@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 
-const page = () => {
+export default function ContactPage() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const router = useRouter();
 
@@ -43,5 +43,3 @@ const page = () => {
       </div>
   )
 }
-
-export default page

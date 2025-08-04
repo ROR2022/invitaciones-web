@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useCallback, useEffect } from 'react'
+import Image from 'next/image'
 import { X, ChevronLeft, ChevronRight, Crown, Sparkles } from 'lucide-react'
 import { vipDemoData } from './data/vip-demo-data'
 
@@ -120,9 +121,11 @@ export function VipGallery() {
                   className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300"
                   onClick={() => openImage(index)}
                 >
-                  <img
+                  <Image
                     src={image.src}
                     alt={image.caption}
+                    width={400}
+                    height={256}
                     className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   
@@ -149,9 +152,11 @@ export function VipGallery() {
           <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
             <div className="relative max-w-4xl max-h-full">
               {/* Imagen principal */}
-              <img
+              <Image
                 src={currentImages[currentImageIndex].src}
                 alt={currentImages[currentImageIndex].caption}
+                width={800}
+                height={600}
                 className="max-w-full max-h-[80vh] object-contain rounded-lg"
               />
               

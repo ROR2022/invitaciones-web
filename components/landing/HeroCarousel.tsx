@@ -43,7 +43,7 @@ export function HeroCarousel({ children, className = "" }: HeroCarouselProps) {
       console.log('Resetting isTransitioning to false')
       setIsTransitioning(false)
     }, carouselConfig.transitionDuration)
-  }, [isTransitioning])
+  }, [isTransitioning, isClient])
 
   // Auto-play functionality - solo activo en cliente
   useEffect(() => {
@@ -82,7 +82,7 @@ export function HeroCarousel({ children, className = "" }: HeroCarouselProps) {
       console.log('Resetting isTransitioning to false')
       setIsTransitioning(false)
     }, carouselConfig.transitionDuration)
-  }, [isTransitioning])
+  }, [isTransitioning, isClient])
 
   const goToSlide = useCallback((index: number) => {
     if (isTransitioning || index === currentSlide) return

@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import { 
   MapPin, 
   Phone, 
@@ -124,16 +125,18 @@ export function VipAccommodation() {
 
         {/* Grid de hoteles */}
         <div className="grid md:grid-cols-2 gap-8">
-          {vipDemoData.accommodation.map((hotel, index) => (
+                      {vipDemoData.accommodation.map((hotel) => (
             <div 
               key={hotel.id}
               className="bg-white rounded-2xl shadow-xl border-2 border-yellow-100 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
             >
               {/* Imagen del hotel */}
               <div className="relative h-48 overflow-hidden">
-                <img 
+                <Image 
                   src={hotel.image} 
                   alt={hotel.name}
+                  width={400}
+                  height={192}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>

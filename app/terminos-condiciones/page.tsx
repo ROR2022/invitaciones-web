@@ -55,11 +55,11 @@ export default function TerminosCondicionesPage() {
                 Definiciones
               </h3>
               <div className="space-y-3 text-gray-700">
-                <p><strong>"Cliente":</strong> La persona física o moral que contrata nuestros servicios.</p>
-                <p><strong>"Servicios":</strong> La creación, diseño y desarrollo de invitaciones digitales.</p>
-                <p><strong>"Contenido":</strong> Imágenes, textos, música y elementos multimedia proporcionados por el cliente.</p>
-                <p><strong>"Entregable":</strong> La invitación digital finalizada y lista para uso.</p>
-                <p><strong>"Plazo de entrega":</strong> El tiempo acordado para la entrega del proyecto.</p>
+                <p><strong>&ldquo;Cliente&rdquo;:</strong> La persona física o moral que contrata nuestros servicios.</p>
+                <p><strong>&ldquo;Servicios&rdquo;:</strong> La creación, diseño y desarrollo de invitaciones digitales.</p>
+                <p><strong>&ldquo;Contenido&rdquo;:</strong> Imágenes, textos, música y elementos multimedia proporcionados por el cliente.</p>
+                <p><strong>&ldquo;Entregable&rdquo;:</strong> La invitación digital finalizada y lista para uso.</p>
+                <p><strong>&ldquo;Plazo de entrega&rdquo;:</strong> El tiempo acordado para la entrega del proyecto.</p>
               </div>
             </div>
 

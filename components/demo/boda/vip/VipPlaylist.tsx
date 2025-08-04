@@ -33,9 +33,9 @@ export function VipPlaylist() {
     setIsPlaying(true)
   }
 
-  const formatTime = (timeString: string) => {
-    return timeString
-  }
+  // const formatTime = (timeString: string) => {
+  //   return timeString
+  // }
 
   if (!isClient) {
     return (
