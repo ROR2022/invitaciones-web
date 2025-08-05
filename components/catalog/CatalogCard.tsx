@@ -22,7 +22,7 @@ export function CatalogCard({ product, onContactClick, className = "" }: Catalog
   useEffect(() => {
     const safetyTimeout = setTimeout(() => {
       setImageLoading(false)
-    }, 3000)
+    }, 2000)
     
     return () => clearTimeout(safetyTimeout)
   }, [])
