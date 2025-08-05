@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -17,6 +17,15 @@ interface CatalogCardProps {
 
 export function CatalogCard({ product, onContactClick, className = "" }: CatalogCardProps) {
   const [imageLoading, setImageLoading] = useState(true)
+  
+  // Safety timeout: ocultar spinner después de 3 segundos máximo
+  useEffect(() => {
+    const safetyTimeout = setTimeout(() => {
+      setImageLoading(false)
+    }, 3000)
+    
+    return () => clearTimeout(safetyTimeout)
+  }, [])
   const [imageError, setImageError] = useState(false)
 
   // Obtener colores según el tipo de paquete
