@@ -25,6 +25,17 @@ export function CatalogGrid({
   const [viewMode, setViewMode] = useState<'grid' | 'list'>(initialView)
   const [isTransitioning, setIsTransitioning] = useState(false)
 
+  // Seguridad: resetear isTransitioning si se queda colgado
+  useEffect(() => {
+    if (isTransitioning) {
+      const safetyTimeout = setTimeout(() => {
+        setIsTransitioning(false)
+      }, 1000) // Máximo 1 segundo de transición
+      
+      return () => clearTimeout(safetyTimeout)
+    }
+  }, [isTransitioning])
+
   // Productos filtrados con memoización para performance
   const filteredProducts = useMemo(() => {
     if (selectedCategory === 'all') {
@@ -37,26 +48,16 @@ export function CatalogGrid({
   const handleCategoryChange = (categoryId: string) => {
     if (categoryId === selectedCategory) return
     
-    setIsTransitioning(true)
-    
-    // Pequeño delay para la animación de salida
-    setTimeout(() => {
-      setSelectedCategory(categoryId)
-      setIsTransitioning(false)
-    }, 150)
+    // Simplificado para móviles - cambio inmediato
+    setSelectedCategory(categoryId)
   }
 
   // Manejar cambio de vista con animación
   const handleViewModeChange = (mode: 'grid' | 'list') => {
     if (mode === viewMode) return
     
-    setIsTransitioning(true)
-    
-    // Delay para transición suave
-    setTimeout(() => {
-      setViewMode(mode)
-      setIsTransitioning(false)
-    }, 200)
+    // Simplificado para móviles - cambio inmediato
+    setViewMode(mode)
   }
 
   // Effect para scroll suave cuando cambia la categoría
