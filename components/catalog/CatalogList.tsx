@@ -79,7 +79,7 @@ function CatalogListItem({ product, onContactClick }: CatalogListItemProps) {
     <div className="group bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 hover:border-gray-300">
       <div className="flex items-center p-4 gap-4">
         {/* Imagen del producto */}
-        <div className="relative w-24 h-18 md:w-32 md:h-24 flex-shrink-0 rounded-lg overflow-hidden">
+        <div className="relative w-24 h-16 md:w-32 md:h-24 flex-shrink-0 rounded-lg overflow-hidden">
           {!imageError ? (
             <Image
               src={product.image}
