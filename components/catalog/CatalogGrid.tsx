@@ -23,18 +23,6 @@ export function CatalogGrid({
   // Estados principales
   const [selectedCategory, setSelectedCategory] = useState(initialCategory)
   const [viewMode, setViewMode] = useState<'grid' | 'list'>(initialView)
-  const [isTransitioning, setIsTransitioning] = useState(false)
-
-  // Seguridad: resetear isTransitioning si se queda colgado
-  useEffect(() => {
-    if (isTransitioning) {
-      const safetyTimeout = setTimeout(() => {
-        setIsTransitioning(false)
-      }, 1000) // Máximo 1 segundo de transición
-      
-      return () => clearTimeout(safetyTimeout)
-    }
-  }, [isTransitioning])
 
   // Productos filtrados con memoización para performance
   const filteredProducts = useMemo(() => {
@@ -78,17 +66,6 @@ export function CatalogGrid({
 
   // Renderizar el grid de productos
   const renderProductGrid = () => {
-    if (isTransitioning) {
-      return (
-        <div className="flex items-center justify-center py-16">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto mb-4" />
-            <p className="text-gray-600">Cargando productos...</p>
-          </div>
-        </div>
-      )
-    }
-
     if (filteredProducts.length === 0) {
       return (
         <div className="text-center py-16">
@@ -157,7 +134,7 @@ export function CatalogGrid({
       </div>
 
       {/* Información adicional del catálogo */}
-      {filteredProducts.length > 0 && !isTransitioning && (
+              {filteredProducts.length > 0 && (
         <div className="mt-8 pt-6 border-t border-gray-200">
           <div className="text-center space-y-3">
             <p className="text-sm text-gray-600">
