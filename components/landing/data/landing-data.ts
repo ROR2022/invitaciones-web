@@ -95,7 +95,7 @@ export const interactiveInvitationContent = {
 }
 
 export const ctaContent = {
-  deliveryText: "Entregas súper rápidas, solo mandanos un mensaje y tendras tu invitación de 24-48 horas.",
+  deliveryText: "Entregas súper rápidas, envia un mensaje y obten tu invitación de 24-48 horas.",
   consultText: "Consulta por costos y servicios adicionales.",
   buttonText: "¡Solicítala ahora!",
   mainTitle: "No esperes más, somos la opción más económica y profesional que encontrarás.",

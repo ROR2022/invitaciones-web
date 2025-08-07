@@ -59,7 +59,7 @@ export default function CatalogPage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 bg-green-400 rounded-full"></span>
-                <span><strong>Contacto directo</strong> por WhatsApp</span>
+                <span><strong>Contacto directo</strong> via WhatsApp</span>
               </div>
             </div>
           </div>
