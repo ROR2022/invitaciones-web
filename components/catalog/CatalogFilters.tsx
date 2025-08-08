@@ -69,7 +69,7 @@ export function CatalogFilters({
             <h2 className="text-lg font-semibold text-gray-900">
               Filtrar Catálogo
             </h2>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-50 hidden">
               {productsCount} {productsCount === 1 ? 'producto encontrado' : 'productos encontrados'}
             </p>
           </div>
