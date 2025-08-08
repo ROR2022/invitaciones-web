@@ -4,6 +4,8 @@ import { ArrowLeft } from "lucide-react"
 import { Metadata } from "next"
 import { Suspense } from "react"
 import CatalogClient from "./CatalogClient"
+import { ContactModal } from "@/components/landing/ContactModal"
+import { useState } from "react"
 
 
 // Metadatos para SEO
@@ -124,16 +126,35 @@ export default function CatalogPage() {
             <p className="text-gray-600 mb-4">
               Creamos diseños completamente personalizados según tus necesidades específicas
             </p>
-            <Button 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3"
-            >
-              Solicitar Diseño Personalizado
-            </Button>
+            <CatalogCTAButton />
           </div>
         </div>
       </div>
-
-      {/* Modal de contacto se ha movido al componente cliente */}
     </main>
+  )
+}
+
+// Componente cliente para el botón CTA
+function CatalogCTAButton() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+
+  const handleContactClick = () => {
+    setIsContactModalOpen(true)
+  }
+
+  return (
+    <>
+      <Button 
+        onClick={handleContactClick}
+        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3"
+      >
+        Solicitar Diseño Personalizado
+      </Button>
+      
+      <ContactModal 
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
+    </>
   )
 }
