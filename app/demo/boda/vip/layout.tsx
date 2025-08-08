@@ -37,17 +37,17 @@ export default function BodaVipLayout({
     <MusicProvider>
       <div className="relative">
         {/* Badge VIP flotante */}
-        <div className="fixed top-4 left-4 z-50 bg-gradient-to-r from-yellow-400 to-amber-500 text-amber-900 px-4 py-2 rounded-full text-sm font-bold shadow-2xl border-2 border-yellow-300 animate-pulse">
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-gradient-to-r from-yellow-400 to-amber-500 text-amber-900 px-4 py-2 rounded-full text-sm font-bold shadow-2xl border-2 border-yellow-300 animate-pulse">
           👑 DEMO VIP - Boda
         </div>
         
         {/* Badge de regreso */}
-        <div className="fixed top-4 right-4 z-50">
+        <div className="fixed top-16 left-1/2 transform -translate-x-1/2 z-50">
           <Link
-            href="/" 
+            href="/catalog" 
             className="bg-white/90 backdrop-blur-sm text-gray-700 px-4 py-2 rounded-full text-sm font-medium shadow-lg border border-gray-200 hover:bg-white transition-all duration-300"
           >
-            ← Inicio
+            ← Catalogo
           </Link>
         </div>
         

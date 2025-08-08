@@ -82,13 +82,13 @@ export default function BautizoPremiumLayout({
 
       {/* Botón de navegación de regreso */}
       <Link 
-        href="/"
+        href="/catalog"
         className="fixed top-20 left-4 z-40 bg-white/90 backdrop-blur-sm text-gray-800 px-4 py-2 rounded-full shadow-lg hover:bg-white transition-all duration-300 border border-gray-200"
       >
         <div className="flex items-center gap-2 text-sm">
           <ArrowLeft size={16} />
-          <span className="hidden sm:inline">Regresar a inicio</span>
-          <span className="sm:hidden">Inicio</span>
+          <span className="hidden sm:inline">Regresar a catalogo</span>
+          <span className="sm:hidden">Catalogo</span>
         </div>
       </Link>
       {children}
