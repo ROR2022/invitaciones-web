@@ -1,18 +1,31 @@
 "use client"
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Play, Pause, SkipBack, SkipForward, Volume2, Music } from 'lucide-react'
 import { premiumDemoData } from './data/premium-demo-data'
+import { useMusicContext } from '@/context/music-context'
 
 export function PremiumMusicPlayer() {
-  const [currentTrack, setCurrentTrack] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const { 
+    isPlaying, 
+    setIsPlaying, 
+    currentTrack, 
+    setCurrentTrack, 
+    nextTrack, 
+    prevTrack,
+    setTracksCount
+  } = useMusicContext()
   const [volume, setVolume] = useState(0.7)
   const audioRef = useRef<HTMLAudioElement>(null)
+  
+  // Establecer el número total de pistas en el contexto
+  useEffect(() => {
+    setTracksCount?.(premiumDemoData.music.tracks.length)
+  }, [])
 
-  const currentTrackData = premiumDemoData.music.tracks[currentTrack]
+  const currentTrackData = premiumDemoData.music.tracks[currentTrack || 0]
 
-  const togglePlay = () => {
+  const handleTogglePlay = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause()
@@ -23,16 +36,12 @@ export function PremiumMusicPlayer() {
     }
   }
 
-  const nextTrack = () => {
-    const next = (currentTrack + 1) % premiumDemoData.music.tracks.length
-    setCurrentTrack(next)
-    setIsPlaying(false)
+  const handleNextTrack = () => {
+    nextTrack()
   }
 
-  const prevTrack = () => {
-    const prev = currentTrack === 0 ? premiumDemoData.music.tracks.length - 1 : currentTrack - 1
-    setCurrentTrack(prev)
-    setIsPlaying(false)
+  const handlePrevTrack = () => {
+    prevTrack()
   }
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -87,21 +96,21 @@ export function PremiumMusicPlayer() {
           {/* Controles principales */}
           <div className="flex items-center justify-center gap-4 mb-6">
             <button
-              onClick={prevTrack}
+              onClick={handlePrevTrack}
               className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
             >
               <SkipBack className="w-6 h-6" />
             </button>
 
             <button
-              onClick={togglePlay}
+              onClick={handleTogglePlay}
               className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-full flex items-center justify-center transition-all shadow-lg"
             >
               {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
             </button>
 
             <button
-              onClick={nextTrack}
+              onClick={handleNextTrack}
               className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
             >
               <SkipForward className="w-6 h-6" />
@@ -131,7 +140,6 @@ export function PremiumMusicPlayer() {
                   key={index}
                   onClick={() => {
                     setCurrentTrack(index)
-                    setIsPlaying(false)
                   }}
                   className={`w-full text-left p-3 rounded-lg transition-all ${
                     currentTrack === index
@@ -156,7 +164,9 @@ export function PremiumMusicPlayer() {
         <audio
           ref={audioRef}
           src={currentTrackData.file}
-          onEnded={nextTrack}
+          onEnded={handleNextTrack}
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
           onLoadedMetadata={() => {
             if (audioRef.current) {
               audioRef.current.volume = volume

@@ -8,12 +8,20 @@ type MusicContextType = {
   setIsPlaying: (isPlaying: boolean) => void
   togglePlay: () => void
   isClient: boolean
+  currentTrack: number
+  setCurrentTrack: (trackIndex: number) => void
+  nextTrack: () => void
+  prevTrack: () => void
+  tracksCount?: number
+  setTracksCount?: (count: number) => void
 }
 
 const MusicContext = createContext<MusicContextType | undefined>(undefined)
 
 export function MusicProvider({ children }: { children: ReactNode }) {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [currentTrack, setCurrentTrack] = useState(0)
+  const [tracksCount, setTracksCount] = useState(1)
   const isClient = useIsClient()
 
   const togglePlay = () => {
@@ -25,13 +33,38 @@ export function MusicProvider({ children }: { children: ReactNode }) {
     if (!isClient) return
     setIsPlaying(playing)
   }
+  
+  const safeSetCurrentTrack = (trackIndex: number) => {
+    if (!isClient) return
+    setCurrentTrack(trackIndex)
+  }
+  
+  const nextTrack = () => {
+    if (!isClient || tracksCount <= 1) return
+    const next = (currentTrack + 1) % tracksCount
+    setCurrentTrack(next)
+    setIsPlaying(false) // Reset playing state when changing track
+  }
+  
+  const prevTrack = () => {
+    if (!isClient || tracksCount <= 1) return
+    const prev = currentTrack === 0 ? tracksCount - 1 : currentTrack - 1
+    setCurrentTrack(prev)
+    setIsPlaying(false) // Reset playing state when changing track
+  }
 
   return (
     <MusicContext.Provider value={{ 
       isPlaying, 
       setIsPlaying: safeSetIsPlaying, 
       togglePlay,
-      isClient 
+      isClient,
+      currentTrack,
+      setCurrentTrack: safeSetCurrentTrack,
+      nextTrack,
+      prevTrack,
+      tracksCount,
+      setTracksCount
     }}>
       {children}
     </MusicContext.Provider>

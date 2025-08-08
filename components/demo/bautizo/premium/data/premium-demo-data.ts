@@ -87,22 +87,22 @@ export const premiumDemoData = {
     message: "Disfruta de la música que hemos seleccionado para este día tan especial",
     tracks: [
       {
-        title: "Ave María",
-        artist: "Schubert",
-        duration: "3:45",
-        file: "/audio/ave-maria.mp3"
+        title: "Melodía Emocional de Violín",
+        artist: "Música Espiritual",
+        duration: "2:55",
+        file: "/music/emotional-violin1.mp3"
       },
       {
-        title: "Jesús de Nazareth",
-        artist: "Villancico",
-        duration: "2:30",
-        file: "/audio/jesus-nazareth.mp3"
+        title: "Piano y Cuerdas Celestiales",
+        artist: "Música para Ceremonias",
+        duration: "3:20",
+        file: "/music/piano-strings1.mp3"
       },
       {
-        title: "Noche de Paz",
-        artist: "Tradicional",
-        duration: "3:15",
-        file: "/audio/noche-paz.mp3"
+        title: "Piano Cinematográfico Esperanzador",
+        artist: "Música de Inspiración",
+        duration: "3:05",
+        file: "/music/hopeful-cinematic-piano1.mp3"
       }
     ],
     backgroundImage: "/images/bautizo/bautizo3.jpeg"

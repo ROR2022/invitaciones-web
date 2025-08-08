@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { premiumDemoData } from '@/components/demo/bautizo/premium/data/premium-demo-data'
 import Link from 'next/link'
 import { ArrowLeft, Star } from 'lucide-react'
+import { MusicProvider } from '@/context/music-context'
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: {
@@ -91,7 +93,15 @@ export default function BautizoPremiumLayout({
           <span className="sm:hidden">Catalogo</span>
         </div>
       </Link>
-      {children}
+      
+      {/* MusicProvider para funcionalidad premium de música */}
+      <MusicProvider>
+        {/* Contenido principal */}
+        {children}
+      </MusicProvider>
+      
+      {/* Toaster para notificaciones */}
+      <Toaster />
     </div>
   )
 }

@@ -5,6 +5,8 @@ import { PremiumPadrinos } from '@/components/demo/bautizo/premium/PremiumPadrin
 import { PremiumGallery } from '@/components/demo/bautizo/premium/PremiumGallery'
 import { PremiumThankYou } from '@/components/demo/bautizo/premium/PremiumThankYou'
 import { PremiumMusicPlayer } from '@/components/demo/bautizo/premium/PremiumMusicPlayer'
+import { FloatingMusicPlayer } from '@/components/demo/bautizo/premium/FloatingMusicPlayer'
+import { AudioElement } from '@/components/demo/bautizo/premium/AudioElement'
 
 export const metadata: Metadata = {
   title: 'Demo Bautizo Premium - Invitaciones Web MX',
@@ -38,13 +40,20 @@ export const metadata: Metadata = {
 
 export default function BautizoPremiumPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100">
-      <PremiumHero />
-      <PremiumInvitation />
-      <PremiumPadrinos />
-      <PremiumGallery />
-      <PremiumThankYou />
-      <PremiumMusicPlayer />
-    </div>
+    <main className="overflow-hidden pb-20">
+      {/* Componente de audio oculto para manejar la reproducción global */}
+      <AudioElement />
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100">
+        <PremiumHero />
+        <PremiumInvitation />
+        <PremiumPadrinos />
+        <PremiumGallery />
+        <PremiumThankYou />
+        <PremiumMusicPlayer />
+        
+        {/* Control flotante de música */}
+        <FloatingMusicPlayer />
+      </div>
+    </main>
   )
 }

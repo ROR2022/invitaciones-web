@@ -249,26 +249,65 @@ export const vipDemoData = {
   music: {
     title: "MÚSICA ESPECIAL",
     message: "Disfruta de la música que hemos seleccionado para este día tan especial",
-    tracks: [
+    categories: [
       {
-        title: "Ave María",
-        artist: "Schubert",
-        duration: "3:45",
-        file: "/audio/ave-maria.mp3"
+        name: "Religiosa",
+        id: "religious"
       },
       {
-        title: "Jesús de Nazareth",
-        artist: "Villancico",
-        duration: "2:30",
-        file: "/audio/jesus-nazareth.mp3"
+        name: "Infantil",
+        id: "children"
       },
       {
-        title: "Noche de Paz",
-        artist: "Tradicional",
-        duration: "3:15",
-        file: "/audio/noche-paz.mp3"
+        name: "Familiar",
+        id: "family"
       }
     ],
+    currentCategory: "religious",
+    tracks: {
+      religious: [
+        {
+          title: "Melodía Emocional de Violín",
+          artist: "Música Espiritual",
+          duration: "2:55",
+          file: "/music/emotional-violin1.mp3"
+        },
+        {
+          title: "Piano y Cuerdas Celestiales",
+          artist: "Música para Ceremonias",
+          duration: "3:20",
+          file: "/music/piano-strings1.mp3"
+        }
+      ],
+      children: [
+        {
+          title: "Cuento de Hadas",
+          artist: "Música Infantil",
+          duration: "2:30",
+          file: "/music/fairy-tale1.mp3"
+        },
+        {
+          title: "Melodías Alegres",
+          artist: "Canciones para Niños",
+          duration: "2:45",
+          file: "/music/feel-good1.mp3"
+        }
+      ],
+      family: [
+        {
+          title: "Piano Romántico",
+          artist: "Música Familiar",
+          duration: "3:15",
+          file: "/music/romantic-love-piano1.mp3"
+        },
+        {
+          title: "Piano de Fantasía",
+          artist: "Música para Todos",
+          duration: "2:50",
+          file: "/music/beautiful-fairy-piano1.mp3"
+        }
+      ]
+    },
     backgroundImage: "/images/bautizo/bautizo4.jpeg"
   },
 

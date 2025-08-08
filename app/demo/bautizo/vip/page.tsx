@@ -6,6 +6,8 @@ import { VipGuestPasses } from '@/components/demo/bautizo/vip/VipGuestPasses'
 import { VipPlaylist } from '@/components/demo/bautizo/vip/VipPlaylist'
 import { VipGallery } from '@/components/demo/bautizo/vip/VipGallery'
 import { VipMusicPlayer } from '@/components/demo/bautizo/vip/VipMusicPlayer'
+import { AudioElement } from '@/components/demo/bautizo/vip/AudioElement'
+import { FloatingMusicPlayer } from '@/components/demo/bautizo/vip/FloatingMusicPlayer'
 
 export const metadata: Metadata = {
   title: 'Demo Bautizo VIP - Invitaciones Web MX',
@@ -37,16 +39,23 @@ export const metadata: Metadata = {
   }
 }
 
-export default function BautizoVipPage() {
+export default function BautizoVipDemo() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-orange-100">
+    <main className="min-h-screen bg-gradient-to-br from-yellow-50 to-orange-100">
+      {/* Componente para reproducir audio (oculto) */}
+      <AudioElement />
+      
+      {/* Botón flotante para controlar música */}
+      <FloatingMusicPlayer />
+      
+      {/* Componentes de contenido */}
       <VipHero />
       <VipAccommodation />
       <VipItinerary />
       <VipGuestPasses />
-      <VipPlaylist />
-      <VipGallery />
+      {/*<VipPlaylist />*/}
       <VipMusicPlayer />
-    </div>
+      <VipGallery />
+    </main>
   )
 }

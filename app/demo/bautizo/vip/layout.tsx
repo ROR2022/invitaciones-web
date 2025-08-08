@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { MusicProvider } from '@/context/music-context'
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: {
@@ -77,7 +79,14 @@ export default function BautizoVipLayout({
             ← Catalogo
           </Link>
         </div>
-      {children}
+      {/* MusicProvider para funcionalidad VIP de música */}
+      <MusicProvider>
+        {/* Contenido principal */}
+        {children}
+      </MusicProvider>
+      
+      {/* Toaster para notificaciones */}
+      <Toaster />
     </div>
   )
 }
