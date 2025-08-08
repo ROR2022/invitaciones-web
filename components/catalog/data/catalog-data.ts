@@ -63,6 +63,21 @@ export const catalogCategories: CatalogCategory[] = [
     gradient: "from-purple-500 to-pink-500"
   },
   {
+    id: "bautizos",
+    name: "Bautizos",
+    icon: "🍼",
+    description: "Celebra el bautizo de tu bebé con amor y fe",
+    images: [
+      "/images/bautizo/bautizo1.jpeg",
+      "/images/bautizo/bautizo2.jpeg",
+      "/images/bautizo/bautizo3.jpeg",
+      "/images/bautizo/bautizo4.jpeg"
+    ],
+    demoLink: "/demo/bautizo",
+    color: "blue",
+    gradient: "from-blue-500 to-cyan-500"
+  },
+  {
     id: "recientes",
     name: "Trabajos Recientes",
     icon: "✨",
@@ -70,9 +85,9 @@ export const catalogCategories: CatalogCategory[] = [
     images: [
       "/images/boda/boda1.jpeg",
       "/images/quince/quince1.jpeg", 
+      "/images/bautizo/bautizo1.jpeg",
       "/images/boda/boda5.jpeg",
-      "/images/quince/quince3.jpeg",
-      "/images/boda/boda3.jpeg"
+      "/images/quince/quince3.jpeg"
     ],
     demoLink: "/demo",
     featured: true,
@@ -191,6 +206,60 @@ export const catalogProducts: CatalogProduct[] = [
     demoLink: "/demo/quince/vip"
   },
 
+  // BAUTIZOS
+  {
+    id: "bautizo-basico",
+    categoryId: "bautizos",
+    name: "Bautizo Básico",
+    description: "Incluye todas las características esenciales para el bautizo de tu bebé",
+    image: "/images/bautizo/bautizo1.jpeg",
+    packageType: "basico",
+    price: "$299",
+    features: [
+      "Cuenta Regresiva",
+      "Cuándo y dónde",
+      "Confirmación de asistencia",
+      "Opciones de regalo",
+      "Información del bebé"
+    ],
+    demoLink: "/demo/bautizo/basic"
+  },
+  {
+    id: "bautizo-premium",
+    categoryId: "bautizos",
+    name: "Bautizo Premium",
+    description: "¡La más solicitada! - Incluye música, galería y padrinos",
+    image: "/images/bautizo/bautizo2.jpeg",
+    packageType: "premium",
+    price: "$499",
+    features: [
+      "Todo del Básico",
+      "Música religiosa",
+      "Galería de fotos",
+      "Lista de padrinos",
+      "Invitación especial"
+    ],
+    demoLink: "/demo/bautizo/premium",
+    popular: true
+  },
+  {
+    id: "bautizo-vip",
+    categoryId: "bautizos",
+    name: "Bautizo VIP",
+    description: "¡El más exclusivo! - Experiencia completa con logística del evento",
+    image: "/images/bautizo/bautizo3.jpeg",
+    packageType: "vip",
+    price: "$699",
+    features: [
+      "Todo del Premium",
+      "Hospedaje recomendado",
+      "Itinerario completo",
+      "Pases de invitados",
+      "Playlist múltiple"
+    ],
+    demoLink: "/demo/bautizo/vip"
+  },
+
   // TRABAJOS RECIENTES (destacados)
   {
     id: "reciente-quince-basico",
@@ -231,7 +300,7 @@ export const catalogProducts: CatalogProduct[] = [
     categoryId: "recientes",
     name: "Bautizo Mia Isabel",
     description: "Experiencia VIP completa con hospedaje e itinerario",
-    image: "/images/bautizo/bautizo1.jpeg",
+    image: "/images/bautizo/bautizo4.jpeg",
     packageType: "vip", 
     price: "$699",
     features: [
