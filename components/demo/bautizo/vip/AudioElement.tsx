@@ -13,16 +13,24 @@ export function AudioElement() {
   const audioRef = useRef<HTMLAudioElement>(null)
   const [currentCategory, setCurrentCategory] = useState(vipDemoData.music.currentCategory)
   
+  // Definir interfaz para evento personalizado
+  interface CategoryChangeEvent extends Event {
+    detail: {
+      category: string
+    }
+  }
+
   // Actualizar la categoría actual cuando cambie en los datos
   useEffect(() => {
-    const handleCategoryChange = (event: CustomEvent) => {
+    const handleCategoryChange = (event: CategoryChangeEvent) => {
       setCurrentCategory(event.detail.category)
     }
     
-    window.addEventListener('categoryChange' as any, handleCategoryChange as EventListener)
+    // Usar el tipo correcto para eventos personalizados
+    window.addEventListener('categoryChange', handleCategoryChange as unknown as EventListener)
     
     return () => {
-      window.removeEventListener('categoryChange' as any, handleCategoryChange as EventListener)
+      window.removeEventListener('categoryChange', handleCategoryChange as unknown as EventListener)
     }
   }, [])
 

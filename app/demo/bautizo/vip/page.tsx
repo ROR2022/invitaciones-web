@@ -3,7 +3,6 @@ import { VipHero } from '@/components/demo/bautizo/vip/VipHero'
 import { VipAccommodation } from '@/components/demo/bautizo/vip/VipAccommodation'
 import { VipItinerary } from '@/components/demo/bautizo/vip/VipItinerary'
 import { VipGuestPasses } from '@/components/demo/bautizo/vip/VipGuestPasses'
-import { VipPlaylist } from '@/components/demo/bautizo/vip/VipPlaylist'
 import { VipGallery } from '@/components/demo/bautizo/vip/VipGallery'
 import { VipMusicPlayer } from '@/components/demo/bautizo/vip/VipMusicPlayer'
 import { AudioElement } from '@/components/demo/bautizo/vip/AudioElement'
@@ -53,7 +52,6 @@ export default function BautizoVipDemo() {
       <VipAccommodation />
       <VipItinerary />
       <VipGuestPasses />
-      {/*<VipPlaylist />*/}
       <VipMusicPlayer />
       <VipGallery />
     </main>

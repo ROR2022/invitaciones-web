@@ -1,11 +1,11 @@
 "use client"
 
 import { useMusicContext } from '@/context/music-context'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { premiumDemoData } from './data/premium-demo-data'
 
 export function FloatingMusicPlayer() {
-  const { isPlaying, setIsPlaying, currentTrack, setCurrentTrack, togglePlay, isClient } = useMusicContext()
+  const { isPlaying, currentTrack, togglePlay, isClient } = useMusicContext()
   const [showTooltip, setShowTooltip] = useState(false)
 
   // No hay necesidad de realizar cambios si estamos en el servidor

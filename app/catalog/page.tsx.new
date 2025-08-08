@@ -1,10 +1,8 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import { CatalogGrid } from "@/components/catalog/CatalogGrid"
 import { Metadata } from "next"
-import { Suspense } from "react"
-import CatalogClient from "./CatalogClient"
-
 
 // Metadatos para SEO
 export const metadata: Metadata = {
@@ -15,7 +13,6 @@ export const metadata: Metadata = {
 
 // Componente de página como Server Component
 export default function CatalogPage() {
-
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Header del Catálogo - Server Component */}
@@ -62,25 +59,23 @@ export default function CatalogPage() {
       
       {/* Contenido principal - Catálogo */}
       <div className="container mx-auto px-4 py-12">
-        {/* Usar Suspense para mejorar la UX durante la carga */}
-        <Suspense fallback={
-          <div className="w-full py-20 flex justify-center items-center">
-            <div className="flex items-center space-x-4">
-              <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-blue-600"></div>
-              <span className="text-lg text-gray-700">Cargando catálogo...</span>
-            </div>
-          </div>
-        }>
-          {/* Usamos el componente cliente para manejar la interactividad */}
-          <CatalogClient />
-        </Suspense>
+        <ClientCatalogContainer />
       </div>
 
       {/* Footer informativo */}
-      <div className="bg-white border-t border-gray-200 mt-16">
-        <div className="container mx-auto px-4 py-8">
-          <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
-            {/* Información de contacto */}
+      <footer className="bg-gray-100 border-t border-gray-200 py-10">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Información general */}
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-3">Invitaciones Web MX</h3>
+              <p className="text-sm text-gray-600">
+                Más de 5 años creando experiencias digitales únicas para tus eventos especiales.
+                Diseños personalizados y soporte técnico incluido.
+              </p>
+            </div>
+            
+            {/* Opciones de contacto */}
             <div>
               <h3 className="font-semibold text-gray-900 mb-3">¿Necesitas ayuda?</h3>
               <div className="space-y-2 text-sm text-gray-600">
@@ -92,48 +87,88 @@ export default function CatalogPage() {
                 </div>
               </div>
             </div>
-
-            {/* Proceso de trabajo */}
+            
+            {/* Información técnica */}
             <div>
-              <h3 className="font-semibold text-gray-900 mb-3">¿Cómo funciona?</h3>
-              <div className="space-y-1 text-sm text-gray-600">
-                <div>1. Explora nuestro catálogo</div>
-                <div>2. Ve los demos interactivos</div>
-                <div>3. Contacta por WhatsApp</div>
-                <div>4. Recibe tu invitación personalizada</div>
-              </div>
-            </div>
-
-            {/* Garantías */}
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-3">Nuestras garantías</h3>
-              <div className="space-y-1 text-sm text-gray-600">
-                <div>✅ Diseños 100% personalizables</div>
-                <div>✅ Entrega en 24-48 horas</div>
-                <div>✅ Soporte técnico incluido</div>
-                <div>✅ Revisiones sin costo adicional</div>
+              <h3 className="font-semibold text-gray-900 mb-3">Información técnica</h3>
+              <div className="space-y-2 text-sm text-gray-600">
+                <div className="flex items-center justify-center md:justify-start gap-2">
+                  <span>Alojamiento en Google Cloud</span>
+                </div>
+                <div className="flex items-center justify-center md:justify-start gap-2">
+                  <span>Dominio personalizado opcional</span>
+                </div>
+                <div className="flex items-center justify-center md:justify-start gap-2">
+                  <span>Análisis de visitas incluido</span>
+                </div>
               </div>
             </div>
           </div>
-
-          {/* Call to action final */}
-          <div className="mt-8 pt-8 border-t border-gray-200 text-center">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              ¿No encuentras lo que buscas?
-            </h3>
-            <p className="text-gray-600 mb-4">
-              Creamos diseños completamente personalizados según tus necesidades específicas
-            </p>
-            <Button 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3"
-            >
-              Solicitar Diseño Personalizado
-            </Button>
+          
+          <div className="mt-8 pt-8 border-t border-gray-200 text-center text-xs text-gray-500">
+            <p>© {new Date().getFullYear()} Invitaciones Web MX. Todos los derechos reservados.</p>
           </div>
         </div>
-      </div>
-
-      {/* Modal de contacto se ha movido al componente cliente */}
+      </footer>
     </main>
   )
+}
+
+// Componente cliente para la parte interactiva
+"use client";
+
+import { useState } from "react";
+import { ContactModal } from "@/components/landing/ContactModal";
+import { Phone, Mail } from "lucide-react";
+
+function ClientCatalogContainer() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  // Manejar clic en contacto desde cualquier producto
+  const handleContactClick = () => {
+    setIsContactModalOpen(true);
+  };
+
+  // Cerrar modal de contacto
+  const handleContactModalClose = () => {
+    setIsContactModalOpen(false);
+  };
+
+  return (
+    <>
+      {/* CTA de contacto directo */}
+      <div className="flex flex-wrap justify-center gap-4 mb-8">
+        <Button 
+          onClick={handleContactClick}
+          size="lg"
+          className="bg-blue-600 hover:bg-blue-700"
+        >
+          <Phone className="w-4 h-4 mr-2" />
+          Solicitar información
+        </Button>
+        <Link href="mailto:contacto@invitacionesinteractivas.mx">
+          <Button 
+            variant="outline" 
+            size="lg"
+          >
+            <Mail className="w-4 h-4 mr-2" />
+            contacto@invitacionesinteractivas.mx
+          </Button>
+        </Link>
+      </div>
+
+      {/* Grid del Catálogo */}
+      <CatalogGrid 
+        onContactClick={handleContactClick} 
+        initialCategory="all"
+        initialView="grid"
+      />
+      
+      {/* Modal de contacto */}
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={handleContactModalClose}
+      />
+    </>
+  );
 }

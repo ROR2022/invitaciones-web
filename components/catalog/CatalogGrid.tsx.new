@@ -7,7 +7,6 @@ import { catalogProducts, getProductsByCategory } from "./data/catalog-data"
 import type { CatalogProduct } from "./data/catalog-data"
 import { useMediaQuery } from "../../hooks/use-media-query"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
 
 // Componente CatalogList (para vista de lista)
 interface CatalogListProps {
@@ -22,18 +21,11 @@ export function CatalogList({ products, onContactClick }: CatalogListProps) {
         <div key={product.id} className="flex flex-col md:flex-row gap-4 p-4 bg-white rounded-lg shadow-sm hover:shadow transition-all duration-200">
           <div className="relative w-full md:w-48 h-32 flex-shrink-0">
             {product.image && (
-              <div className="relative w-full h-full">
-                <Image 
-                  src={product.image} 
-                  alt={product.name} 
-                  fill
-                  sizes="(max-width: 768px) 100vw, 300px"
-                  className="object-cover rounded-md" 
-                  loading="lazy"
-                  placeholder="blur"
-                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzAwIiBoZWlnaHQ9IjQ3NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
-                />
-              </div>
+              <img 
+                src={product.image} 
+                alt={product.name} 
+                className="w-full h-full object-cover rounded-md" 
+              />
             )}
           </div>
           <div className="flex-1 flex flex-col">
@@ -166,8 +158,6 @@ export function CatalogGrid({
         <CatalogFilters 
           selectedCategory={selectedCategory} 
           onCategoryChange={handleCategoryChange}
-          viewMode={viewMode}
-          onViewModeChange={handleViewModeChange}
         />
         
         <div className="flex items-center space-x-2">

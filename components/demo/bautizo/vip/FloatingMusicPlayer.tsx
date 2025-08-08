@@ -1,14 +1,15 @@
 "use client"
 
 import { useMusicContext } from '@/context/music-context'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { vipDemoData } from './data/vip-demo-data'
 import { Music } from 'lucide-react'
 
 export function FloatingMusicPlayer() {
   const { isPlaying, togglePlay, currentTrack, isClient } = useMusicContext()
   const [showTooltip, setShowTooltip] = useState(false)
-  const [currentCategory, setCurrentCategory] = useState<string>('religious')
+  // Usamos directamente 'religious' como categoría por defecto sin necesidad de estado
+  const currentCategory = 'religious'
 
   // No hay necesidad de realizar cambios si estamos en el servidor
   if (!isClient) return null

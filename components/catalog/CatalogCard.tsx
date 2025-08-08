@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, memo, useMemo } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -8,6 +8,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Eye, MessageCircle, Star, Check } from "lucide-react"
 import type { CatalogProduct } from "./data/catalog-data"
+import { useMediaQuery } from "../../hooks/use-media-query"
 
 interface CatalogCardProps {
   product: CatalogProduct
@@ -15,21 +16,27 @@ interface CatalogCardProps {
   className?: string
 }
 
-export function CatalogCard({ product, onContactClick, className = "" }: CatalogCardProps) {
+// Usar memo para evitar re-renderizados innecesarios
+function CatalogCardComponent({ product, onContactClick, className = "" }: CatalogCardProps) {
+  // Agregar código para finalizar implementación
+  // Detectar si estamos en dispositivo móvil
+  const isMobile = useMediaQuery("(max-width: 768px)")
   const [imageLoading, setImageLoading] = useState(true)
   
-  // Safety timeout: ocultar spinner después de 3 segundos máximo
+  // Safety timeout: ocultar spinner después de un tiempo más corto en móviles
   useEffect(() => {
     const safetyTimeout = setTimeout(() => {
       setImageLoading(false)
-    }, 2000)
+    }, isMobile ? 1000 : 2000)
     
     return () => clearTimeout(safetyTimeout)
-  }, [])
+  }, [isMobile])
   const [imageError, setImageError] = useState(false)
 
-  // Obtener colores según el tipo de paquete
-  const getPackageColors = (packageType: string) => {
+  // Obtener colores según el tipo de paquete (memoizado)
+  const colors = useMemo(() => getPackageColors(product.packageType), [product.packageType])
+  
+  function getPackageColors(packageType: string) {
     switch (packageType) {
       case 'basico':
         return {
@@ -62,8 +69,6 @@ export function CatalogCard({ product, onContactClick, className = "" }: Catalog
     }
   }
 
-  const colors = getPackageColors(product.packageType)
-
   const handleImageLoad = () => {
     setImageLoading(false)
   }
@@ -87,12 +92,15 @@ export function CatalogCard({ product, onContactClick, className = "" }: Catalog
             src={product.image}
             alt={product.name}
             fill
-            className={`object-cover transition-all duration-300 group-hover:scale-105 ${
+            sizes={isMobile ? "100vw" : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"}
+            className={`object-cover transition-all duration-300 ${!isMobile ? 'group-hover:scale-105' : ''} ${
               imageLoading ? 'blur-sm' : 'blur-0'
             }`}
             onLoad={handleImageLoad}
             onError={handleImageError}
-            priority={product.popular}
+            loading={product.popular ? "eager" : "lazy"}
+            placeholder={"blur"}
+            blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PC9zdmc+"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
@@ -168,11 +176,12 @@ export function CatalogCard({ product, onContactClick, className = "" }: Catalog
       <CardContent className="pt-0 pb-3">
         <div className="space-y-2">
           <h4 className="text-sm font-medium text-gray-800">Incluye:</h4>
-          <div className="grid grid-cols-1 gap-1">
-            {product.features.slice(0, 3).map((feature, index) => (
-              <div key={index} className="flex items-center gap-2 text-xs text-gray-600">
+          {/* Características principales - limitar más en móviles */}
+          <div className="grid grid-cols-1 gap-2 mt-4">
+            {product.features.slice(0, isMobile ? 2 : 4).map((feature, index) => (
+              <div key={index} className="flex items-start gap-2">
                 <Check className="w-3 h-3 text-green-500 flex-shrink-0" />
-                <span className="truncate">{feature}</span>
+                <span className="text-xs text-gray-600 truncate">{feature}</span>
               </div>
             ))}
             {product.features.length > 3 && (
@@ -186,7 +195,7 @@ export function CatalogCard({ product, onContactClick, className = "" }: Catalog
 
       {/* Footer con botones */}
       <CardFooter className="pt-3 bg-gradient-to-r bg-gray-50 flex gap-2">
-        <Link href={product.demoLink} className="flex-1">
+        <Link href={product.demoLink} className="block mt-2" prefetch={false}>
           <Button 
             variant="outline" 
             className={`w-full ${colors.button} transition-all duration-200`}
@@ -216,3 +225,6 @@ export function CatalogCard({ product, onContactClick, className = "" }: Catalog
     </Card>
   )
 }
+
+// Exportar componente memoizado para evitar re-renders innecesarios
+export const CatalogCard = memo(CatalogCardComponent);

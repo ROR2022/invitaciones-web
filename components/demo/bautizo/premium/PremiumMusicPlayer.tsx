@@ -21,7 +21,7 @@ export function PremiumMusicPlayer() {
   // Establecer el número total de pistas en el contexto
   useEffect(() => {
     setTracksCount?.(premiumDemoData.music.tracks.length)
-  }, [])
+  }, [setTracksCount])
 
   const currentTrackData = premiumDemoData.music.tracks[currentTrack || 0]
 

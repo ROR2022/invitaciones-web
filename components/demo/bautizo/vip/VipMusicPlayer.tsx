@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import { Play, Pause, SkipBack, SkipForward, Volume2, Music, Download } from 'lucide-react'
 import { vipDemoData } from './data/vip-demo-data'
 import { useMusicContext } from '@/context/music-context'
@@ -12,8 +12,7 @@ export function VipMusicPlayer() {
     setIsPlaying, 
     currentTrack, 
     setCurrentTrack,
-    nextTrack: contextNextTrack,
-    prevTrack: contextPrevTrack,
+    // Eliminamos las variables no utilizadas pero mantenemos setTracksCount
     setTracksCount
   } = useMusicContext()
   
@@ -21,8 +20,11 @@ export function VipMusicPlayer() {
   const [currentCategory, setCurrentCategory] = useState(vipDemoData.music.currentCategory)
   const audioRef = useRef<HTMLAudioElement>(null)
   
-  // Obtener las pistas de la categoría actual
-  const tracks = vipDemoData.music.tracks[currentCategory as keyof typeof vipDemoData.music.tracks] || []
+  // Obtener las pistas de la categoría actual con useMemo para evitar recálculos innecesarios
+  const tracks = useMemo(() => {
+    return vipDemoData.music.tracks[currentCategory as keyof typeof vipDemoData.music.tracks] || []
+  }, [currentCategory])
+  
   const currentTrackData = tracks[currentTrack || 0]
 
   // Establecer el número total de pistas en el contexto cuando cambia la categoría
