@@ -4,9 +4,7 @@ import { ArrowLeft } from "lucide-react"
 import { Metadata } from "next"
 import { Suspense } from "react"
 import CatalogClient from "./CatalogClient"
-import { ContactModal } from "@/components/landing/ContactModal"
-import { useState } from "react"
-
+import { CatalogCTAButton } from "./CatalogCTAButton"
 
 // Metadatos para SEO
 export const metadata: Metadata = {
@@ -17,7 +15,6 @@ export const metadata: Metadata = {
 
 // Componente de página como Server Component
 export default function CatalogPage() {
-
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Header del Catálogo - Server Component */}
@@ -131,30 +128,5 @@ export default function CatalogPage() {
         </div>
       </div>
     </main>
-  )
-}
-
-// Componente cliente para el botón CTA
-function CatalogCTAButton() {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
-
-  const handleContactClick = () => {
-    setIsContactModalOpen(true)
-  }
-
-  return (
-    <>
-      <Button 
-        onClick={handleContactClick}
-        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3"
-      >
-        Solicitar Diseño Personalizado
-      </Button>
-      
-      <ContactModal 
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
-    </>
   )
 }
