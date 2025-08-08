@@ -8,6 +8,8 @@ import type { CatalogProduct } from "./data/catalog-data"
 import { useMediaQuery } from "../../hooks/use-media-query"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import Link from "next/link"
+import { Eye, MessageCircle } from "lucide-react"
 
 // Componente CatalogList (para vista de lista)
 interface CatalogListProps {
@@ -47,11 +49,23 @@ export function CatalogList({ products, onContactClick }: CatalogListProps) {
                 {product.categoryId}
               </div>
               <div className="space-x-2">
+                <Link href={product.demoLink}>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                  >
+                    <Eye className="w-4 h-4 mr-2" />
+                    Ver Demo
+                  </Button>
+                </Link>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => onContactClick(product)}
+                  className="bg-green-600 hover:bg-green-700 text-white border-green-600"
                 >
+                  <MessageCircle className="w-4 h-4 mr-2" />
                   Contactar
                 </Button>
               </div>
