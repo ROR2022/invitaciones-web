@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { MusicProvider } from '@/context/music-context'
 import { VipMusicPlayer } from '@/components/demo/boda/vip/VipMusicPlayer'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Demo VIP - Boda Ana & Carlos | Invitaciones Digitales',
@@ -42,12 +43,12 @@ export default function BodaVipLayout({
         
         {/* Badge de regreso */}
         <div className="fixed top-4 right-4 z-50">
-          <a 
-            href="/demo/boda/premium" 
+          <Link
+            href="/" 
             className="bg-white/90 backdrop-blur-sm text-gray-700 px-4 py-2 rounded-full text-sm font-medium shadow-lg border border-gray-200 hover:bg-white transition-all duration-300"
           >
-            ← Premium
-          </a>
+            ← Inicio
+          </Link>
         </div>
         
         {/* Reproductor de música VIP */}

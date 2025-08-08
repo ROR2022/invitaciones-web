@@ -213,6 +213,10 @@ export const premiumDemoData = {
     ]
   },
 
+  premium: {
+    color: "from-purple-600 to-pink-600"
+  },
+
   demo: {
     badge: "🌟 DEMO - Paquete Premium ($499)",
     description: "Esta es una demostración del paquete premium para bautizos",
