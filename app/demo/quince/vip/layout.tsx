@@ -49,13 +49,13 @@ export default function VipQuinceDemoLayout({
 
       {/* Botón de navegación de regreso con estilo VIP */}
       <Link 
-        href="/"
+        href="/catalog"
         className="fixed top-24 left-4 z-40 bg-gradient-to-r from-yellow-400/90 to-amber-500/90 backdrop-blur-sm text-amber-900 px-4 py-2 rounded-full shadow-xl hover:from-yellow-300 hover:to-amber-400 transition-all duration-300 border-2 border-yellow-300/50 font-medium"
       >
         <div className="flex items-center gap-2 text-sm">
           <ArrowLeft size={16} />
-          <span className="hidden sm:inline">Regresar a inicio</span>
-          <span className="sm:hidden">Inicio</span>
+          <span className="hidden sm:inline">Regresar a catalogo</span>
+          <span className="sm:hidden">Catalogo</span>
         </div>
       </Link>
 
