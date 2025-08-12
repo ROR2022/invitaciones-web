@@ -78,6 +78,20 @@ export const catalogCategories: CatalogCategory[] = [
     gradient: "from-blue-500 to-cyan-500"
   },
   {
+    id: "cumpleanos-infantiles",
+    name: "Cumpleaños Infantiles",
+    icon: "🎂",
+    description: "Celebra el cumpleaños de tu pequeño con temas mágicos y divertidos",
+    images: [
+      "/images/cumple/vaqueros/vaqueros1.png",
+      "/images/cumple/vaqueros/vaqueros2.png",
+      "/images/cumple/vaqueros/vaqueros3.png"
+    ],
+    demoLink: "/demo/cumpleanos",
+    color: "green",
+    gradient: "from-green-500 to-emerald-500"
+  },
+  {
     id: "recientes",
     name: "Trabajos Recientes",
     icon: "✨",
@@ -260,6 +274,60 @@ export const catalogProducts: CatalogProduct[] = [
     demoLink: "/demo/bautizo/vip"
   },
 
+  // CUMPLEAÑOS INFANTILES
+  {
+    id: "cumpleanos-basico",
+    categoryId: "cumpleanos-infantiles",
+    name: "Cumpleaños Vaqueros",
+    description: "¡Yeehaw! Celebra con el tema del salvaje oeste y aventuras vaqueras",
+    image: "/images/cumple/vaqueros/vaqueros1.png",
+    packageType: "basico",
+    price: "$299",
+    features: [
+      "Cuenta Regresiva",
+      "Cuándo y dónde",
+      "Confirmación de asistencia",
+      "Opciones de regalo",
+      "Código de vestimenta vaquero"
+    ],
+    demoLink: "/demo/cumpleanos/basic"
+  },
+  {
+    id: "cumpleanos-premium",
+    categoryId: "cumpleanos-infantiles",
+    name: "Cumpleaños Superhéroes",
+    description: "¡Poderes activados! Celebra con música épica y galería heroica",
+    image: "/images/cumple/vaqueros/vaqueros2.png",
+    packageType: "premium",
+    price: "$499",
+    features: [
+      "Todo del Básico",
+      "Música de superhéroes",
+      "Galería de fotos épica",
+      "Lista de invitados especiales",
+      "Invitación heroica completa"
+    ],
+    demoLink: "/demo/cumpleanos/premium",
+    popular: true
+  },
+  {
+    id: "cumpleanos-vip",
+    categoryId: "cumpleanos-infantiles",
+    name: "Cumpleaños Princesas",
+    description: "¡Magia real! Experiencia VIP con música orquestal y lista de invitados especiales",
+    image: "/images/cumple/vaqueros/vaqueros3.png",
+    packageType: "vip",
+    price: "$699",
+    features: [
+      "Todo del Premium",
+      "Música orquestal real",
+      "Galería VIP con categorías",
+      "Lista de invitados especiales",
+      "Experiencia mágica completa"
+    ],
+    demoLink: "/demo/cumpleanos/vip"
+  },
+
   // TRABAJOS RECIENTES (destacados)
   {
     id: "reciente-quince-basico",
@@ -310,6 +378,23 @@ export const catalogProducts: CatalogProduct[] = [
       "Pases VIP"
     ],
     demoLink: "https://bautizo-vip-mia-isabel.vercel.app/"
+  },
+  {
+    id: "reciente-cumpleanos-premium",
+    categoryId: "recientes",
+    name: "Cumpleaños Superhéroes",
+    description: "Diseño reciente con música épica y galería heroica",
+    image: "/images/cumple/vaqueros/vaqueros2.png",
+    packageType: "premium",
+    price: "$499",
+    features: [
+      "Música de superhéroes",
+      "Galería épica",
+      "Lista de invitados especiales",
+      "Invitación heroica"
+    ],
+    demoLink: "/demo/cumpleanos/premium",
+    popular: true
   }
 ]
 
@@ -345,9 +430,9 @@ export const catalogConfig = {
 
 // Metadata para SEO
 export const catalogMetadata = {
-  title: "Catálogo de Invitaciones Digitales | Bodas, XV Años y Más",
-  description: "Descubre nuestro catálogo completo de invitaciones digitales. Paquetes desde $299 para bodas, XV años y eventos especiales. Ver demos interactivos.",
-  keywords: "invitaciones digitales, bodas, XV años, catálogo, precios, demos, México",
+  title: "Catálogo de Invitaciones Digitales | Bodas, XV Años, Cumpleaños y Más",
+  description: "Descubre nuestro catálogo completo de invitaciones digitales. Paquetes desde $299 para bodas, XV años, cumpleaños infantiles y eventos especiales. Ver demos interactivos.",
+  keywords: "invitaciones digitales, bodas, XV años, cumpleaños infantiles, catálogo, precios, demos, México",
   ogImage: "/images/boda/boda1.jpeg"
 }
 
