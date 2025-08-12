@@ -84,8 +84,8 @@ export const catalogCategories: CatalogCategory[] = [
     description: "Celebra el cumpleaños de tu pequeño con temas mágicos y divertidos",
     images: [
       "/images/cumple/vaqueros/vaqueros1.png",
-      "/images/cumple/vaqueros/vaqueros2.png",
-      "/images/cumple/vaqueros/vaqueros3.png"
+      "/images/cumple/super/superheroes1.png",
+      "/images/cumple/princesas/princesas1.png"
     ],
     demoLink: "/demo/cumpleanos",
     color: "green",
@@ -297,7 +297,7 @@ export const catalogProducts: CatalogProduct[] = [
     categoryId: "cumpleanos-infantiles",
     name: "Cumpleaños Superhéroes",
     description: "¡Poderes activados! Celebra con música épica y galería heroica",
-    image: "/images/cumple/vaqueros/vaqueros2.png",
+    image: "/images/cumple/super/superheroes1.png",
     packageType: "premium",
     price: "$499",
     features: [
@@ -315,7 +315,7 @@ export const catalogProducts: CatalogProduct[] = [
     categoryId: "cumpleanos-infantiles",
     name: "Cumpleaños Princesas",
     description: "¡Magia real! Experiencia VIP con música orquestal y lista de invitados especiales",
-    image: "/images/cumple/vaqueros/vaqueros3.png",
+    image: "/images/cumple/princesas/princesas1.png",
     packageType: "vip",
     price: "$699",
     features: [
@@ -384,7 +384,7 @@ export const catalogProducts: CatalogProduct[] = [
     categoryId: "recientes",
     name: "Cumpleaños Superhéroes",
     description: "Diseño reciente con música épica y galería heroica",
-    image: "/images/cumple/vaqueros/vaqueros2.png",
+    image: "/images/cumple/super/superheroes1.png",
     packageType: "premium",
     price: "$499",
     features: [
