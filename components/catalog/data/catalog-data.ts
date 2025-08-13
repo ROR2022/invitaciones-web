@@ -380,20 +380,71 @@ export const catalogProducts: CatalogProduct[] = [
     demoLink: "https://bautizo-vip-mia-isabel.vercel.app/"
   },
   {
-    id: "reciente-cumpleanos-premium",
+    id: "reciente-bautizo-vip-demo",
     categoryId: "recientes",
-    name: "Cumpleaños Superhéroes",
-    description: "Diseño reciente con música épica y galería heroica",
-    image: "/images/cumple/super/superheroes1.png",
+    name: "Bautizo Vip Demp",
+    description: "Experiencia VIP completa con hospedaje e itinerario",
+    image: "/images/bautizo/bautizo4.jpeg",
+    packageType: "vip",
+    price: "$699",
+    features: [
+      "Logística completa",
+      "Hospedaje premium",
+      "Itinerario detallado",
+      "Pases VIP"
+    ],
+    demoLink: "https://bautizo-vip-demo.vercel.app/",
+    popular: false
+  },
+  {
+    id: "reciente-cumple-tres-western",
+    categoryId: "recientes",
+    name: "Cumpleaños Tres Western",
+    description: "Experiencia VIP completa con hospedaje e itinerario",
+    image: "/images/cumple/western/cumple-tres-western.jpeg",
+    packageType: "vip",
+    price: "$699",
+    features: [
+      "Logística completa",
+      "Hospedaje premium",
+      "Itinerario detallado",
+      "Pases VIP"
+    ],
+    demoLink: "https://cumple-tres-lluvia-marina.vercel.app/",
+    popular: false
+  },
+  {
+    id: "reciente-quince-premium-aurora",
+    categoryId: "recientes",
+    name: "Quinceañera Premium Aurora",
+    description: "Experiencia Premium",
+    image: "/images/quince/aurora_1.jpeg",
     packageType: "premium",
     price: "$499",
     features: [
-      "Música de superhéroes",
-      "Galería épica",
-      "Lista de invitados especiales",
-      "Invitación heroica"
+      "Música personalizada",
+      "Galería premium", 
+      "Lista de padrinos",
+      "Invitación completa"
     ],
-    demoLink: "/demo/cumpleanos/premium",
+    demoLink: "https://quince-premium-pamela-kitana.vercel.app/",
+    popular: true
+  },
+  {
+    id: "reciente-cumple-premium-escaramuza",
+    categoryId: "recientes",
+    name: "Cumpleaños Premium Escaramuza",
+    description: "Experiencia Premium",
+    image: "/images/cumple/vaqueros/vaqueros3.png",
+    packageType: "premium",
+    price: "$499",
+    features: [
+      "Música personalizada",
+      "Galería premium",
+      "Lista de padrinos",
+      "Invitación completa"
+    ],
+    demoLink: "https://cumple-premium-lluvia-marina.vercel.app/",
     popular: true
   }
 ]
