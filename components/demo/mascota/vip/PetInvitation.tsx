@@ -54,7 +54,7 @@ export const PetInvitation = () => {
                   >
                     <div className="relative w-24 h-24 md:w-32 md:h-32 mb-3">
                       <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-fuchsia-500 p-1">
-                        <div className="w-full h-full rounded-full overflow-hidden bg-white">
+                        <div className="relative w-full h-full rounded-full overflow-hidden bg-white">
                           <Image 
                             src={pet.photo} 
                             alt={pet.name}

@@ -8,6 +8,7 @@ export const contactFormData = {
     { value: "quince", label: "XV Años", icon: "👑" },
     { value: "bautizo", label: "Bautizo", icon: "👶" },
     { value: "cumpleanos", label: "Cumpleaños", icon: "🎂" },
+    { value: "mascota", label: "Fiesta de Mascotas", icon: "🐾" },
     { value: "corporativo", label: "Evento Corporativo", icon: "🏢" },
     { value: "otro", label: "Otro", icon: "🎉" }
   ],

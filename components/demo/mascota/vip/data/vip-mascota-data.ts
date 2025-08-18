@@ -236,7 +236,7 @@ export const vipMascotaData = {
         lng: -99.1332
       },
       googleMapsUrl: 'https://goo.gl/maps/example',
-      image: '/images/venues/garden-venue.jpg',
+      image: '/images/pets/fiestaPets1.png',
       features: [
         'Espacio al aire libre para mascotas',
         '\u00c1rea cubierta con aire acondicionado',
@@ -731,75 +731,82 @@ export const vipMascotaData = {
         id: 'gift-1',
         name: 'Cama ortopédica de lujo',
         description: 'Cama especial con materiales premium para el máximo confort',
-        image: '/images/pets/pet-bed.jpg',
+        image: '/images/pets/cama1.png',
         price: '$1,200',
         petType: 'both',
         category: 'both',
         reserved: false,
-        featured: true
+        featured: true,
+        link: 'https://petstore.example.com/beds/orthopedic-luxury'
       },
       {
         id: 'gift-2',
         name: 'Set de juguetes interactivos',
         description: 'Colección de juguetes que estimulan la mente y promueven el ejercicio',
-        image: '/images/pets/pet-toys.jpg',
+        image: '/images/pets/toys1.png',
         price: '$850',
         petType: 'both',
         category: 'both',
         reserved: true,
-        reservedBy: 'Familia Martínez'
+        reservedBy: 'Familia Martínez',
+        link: 'https://petstore.example.com/toys/interactive-set'
       },
       {
         id: 'gift-3',
         name: 'Rascador de diseño',
         description: 'Elegante rascador con múltiples niveles y áreas de descanso',
-        image: '/images/pets/cat-tree.jpg',
+        image: '/images/pets/catTree1.png',
         price: '$1,800',
         petType: 'cat',
         category: 'cat',
-        reserved: false
+        reserved: false,
+        link: 'https://petstore.example.com/cats/scratching-posts/designer'
       },
       {
         id: 'gift-4',
         name: 'Dispensador inteligente de comida',
         description: 'Dispensador automático programable con cámara integrada',
-        image: '/images/pets/smart-feeder.jpg',
+        image: '/images/pets/smartFeeder1.png',
         price: '$2,200',
         petType: 'both',
         category: 'both',
         reserved: false,
-        featured: true
+        featured: true,
+        link: 'https://petstore.example.com/feeders/smart-dispenser'
       },
       {
         id: 'gift-5',
         name: 'Arnés de aventura',
         description: 'Arnés profesional para caminatas y aventuras al aire libre',
-        image: '/images/pets/dog-harness.jpg',
+        image: '/images/pets/dogs/dogArnes2.png',
         price: '$950',
         petType: 'dog',
         category: 'dog',
-        reserved: false
+        reserved: false,
+        link: 'https://petstore.example.com/dogs/harnesses/adventure'
       },
       {
         id: 'gift-6',
         name: 'Set de grooming profesional',
         description: 'Kit completo para el cuidado del pelaje de alta calidad',
-        image: '/images/pets/grooming-kit.jpg',
+        image: '/images/pets/groomingKit1.png',
         price: '$1,500',
         petType: 'both',
         category: 'both',
         reserved: true,
-        reservedBy: 'Ana y Pedro'
+        reservedBy: 'Ana y Pedro',
+        link: 'https://petstore.example.com/grooming/professional-kit'
       },
       {
         id: 'gift-7',
         name: 'Donación a refugio animal',
         description: 'Tu contribución ayudará a animales sin hogar',
-        image: '/images/pets/animal-shelter.jpg',
+        image: '/images/pets/animalShelter1.png',
         price: 'Cualquier cantidad',
         petType: 'both',
         category: 'donation',
-        reserved: false
+        reserved: false,
+        link: 'https://refugiopatitas.org/donar'
       }
     ],
     registries: [
@@ -843,14 +850,14 @@ export const vipMascotaData = {
         id: 'charity-1',
         organization: 'Refugio Patitas Felices',
         description: 'Ayuda a perros y gatos sin hogar a encontrar una familia',
-        image: '/images/pets/charity-dogs.jpg',
+        image: '/images/pets/charityDogs1.png',
         donationLink: 'https://patitasfelices.org/donar'
       },
       {
         id: 'charity-2',
         organization: 'Fundación Mascotas Saludables',
         description: 'Brinda atención veterinaria a mascotas de familias sin recursos',
-        image: '/images/pets/charity-vet.jpg',
+        image: '/images/pets/charityVet1.png',
         donationLink: 'https://mascotassaludables.org/ayudar'
       }
     ]

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { ContactModal } from '@/components/landing/ContactModal'
 
 // Importamos componentes para el sistema de música
 import { MusicProvider } from '@/components/demo/mascota/vip/context/MusicProvider'
@@ -49,7 +50,7 @@ export default function MascotaVipPage() {
       <VipPetCareTakers />
       
       {/* Componentes premium mejorados */}
-      <VipPetPlaylist />
+      {/* <VipPetPlaylist /> */}
       <VipPetGallery />
       
       {/* Componentes básicos adaptados */}
@@ -207,59 +208,11 @@ export default function MascotaVipPage() {
         </div>
       </section>
       
-      {/* Modal de contacto (simulado) */}
-      {isContactModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-white rounded-2xl p-6 max-w-md w-full"
-          >
-            <h3 className="text-2xl font-bold text-purple-800 mb-4">¡Contáctanos!</h3>
-            <p className="text-gray-600 mb-6">
-              Completa el formulario y nos pondremos en contacto contigo para crear la invitación perfecta para tu celebración de mascotas.
-            </p>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
-                <input 
-                  type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                  placeholder="Tu nombre"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input 
-                  type="email"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                  placeholder="tu@email.com"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
-                <textarea 
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 h-24"
-                  placeholder="Cuéntanos sobre tu evento..."
-                ></textarea>
-              </div>
-              <div className="flex justify-between">
-                <button 
-                  className="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors"
-                  onClick={() => setIsContactModalOpen(false)}
-                >
-                  Cancelar
-                </button>
-                <button 
-                  className="bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white px-4 py-2 rounded-lg hover:shadow-md transition-all"
-                >
-                  Enviar
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      )}
+      {/* Modal de contacto  */}
+     <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
       </main>
     </MusicProvider>
   )

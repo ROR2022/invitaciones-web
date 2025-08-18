@@ -18,37 +18,37 @@ export const VipPetHero = () => {
   const [isMuted, setIsMuted] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   
-  // Referencias para audio
-  const audioRef = useState<HTMLAudioElement | null>(null)
+  // Referencias para audio (FIXED)
+  const [audioRef, setAudioRef] = useState<HTMLAudioElement | null>(null)
   
   // Crear referencia de audio al cargar el componente
+  //music/calm-emotional-cello-main1.mp3
   useEffect(() => {
     // Solo en cliente
     if (typeof window !== 'undefined') {
       const audio = new Audio('/music/fairy-tale1.mp3')
       audio.loop = true
       audio.volume = 0.5
-      audioRef[1](audio)
+      setAudioRef(audio)
       
       return () => {
         audio.pause()
         audio.src = ''
       }
     }
-  }, [audioRef])
+  }, []) // FIXED: sin dependencias
   
-  // Efecto para manejar reproducción y volumen
+  // Efecto para manejar reproducción y volumen (FIXED)
   useEffect(() => {
-    const audio = audioRef[0]
-    if (!audio) return
+    if (!audioRef) return
     
     if (isPlaying) {
-      audio.play().catch(err => console.error("Error al reproducir audio:", err))
+      audioRef.play().catch((err: Error) => console.error("Error al reproducir audio:", err))
     } else {
-      audio.pause()
+      audioRef.pause()
     }
     
-    audio.muted = isMuted
+    audioRef.muted = isMuted
   }, [isPlaying, isMuted, audioRef])
   
   // Calcular tiempo restante
@@ -209,7 +209,7 @@ export const VipPetHero = () => {
         
         {/* Controles de audio */}
         <motion.div 
-          className="absolute bottom-8 right-8 flex items-center gap-4"
+          className="fixed bottom-8 right-8 flex items-center gap-4 bg-slate-700 rounded-xl p-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.5 }}
