@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ContactModal } from '@/components/landing/ContactModal'
 
@@ -29,6 +30,7 @@ import { PetThankYou } from '@/components/demo/mascota/vip/PetThankYou'
 
 // Importamos los datos del VIP
 import { vipMascotaData } from '@/components/demo/mascota/vip/data/vip-mascota-data'
+import { ArrowLeft } from 'lucide-react'
 
 export default function MascotaVipPage() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
@@ -36,6 +38,17 @@ export default function MascotaVipPage() {
   return (
     <MusicProvider>
       <main className="min-h-screen">
+        {/* Botón de navegación de regreso */}
+      <Link 
+        href="/catalog"
+        className="fixed top-20 left-4 z-40 bg-white/90 backdrop-blur-sm text-gray-800 px-4 py-2 rounded-full shadow-lg hover:bg-white transition-all duration-300 border border-gray-200"
+      >
+        <div className="flex items-center gap-2 text-sm">
+          <ArrowLeft size={16} />
+          <span className="hidden sm:inline">Regresar a catalogo</span>
+          <span className="sm:hidden">Catalogo</span>
+        </div>
+      </Link>
         {/* Componente de audio invisible */}
         <AudioElement />
         
