@@ -78,6 +78,20 @@ export const catalogCategories: CatalogCategory[] = [
     gradient: "from-blue-500 to-cyan-500"
   },
   {
+    id: "mascotas",
+    name: "Mascotas",
+    icon: "🐾",
+    description: "Celebra los momentos especiales de tus amigos peludos",
+    images: [
+      "/images/pets/dogs/dog1.jpeg",
+      "/images/pets/dogs/dog2.jpeg",
+      "/images/pets/dogs/dog3.jpeg"
+    ],
+    demoLink: "/demo/mascota",
+    color: "cyan",
+    gradient: "from-cyan-500 to-blue-500"
+  },
+  {
     id: "cumpleanos-infantiles",
     name: "Cumpleaños Infantiles",
     icon: "🎂",
@@ -328,6 +342,65 @@ export const catalogProducts: CatalogProduct[] = [
     demoLink: "/demo/cumpleanos/vip"
   },
 
+  // MASCOTAS
+  {
+    id: "mascota-perro-basico",
+    categoryId: "mascotas",
+    name: "Cumpleaños de Lomito",
+    description: "Celebración especial para tu amigo canino más fiel",
+    image: "/images/pets/dogs/dog_1.jpeg",
+    packageType: "basico",
+    price: "$299",
+    features: [
+      "Cuenta Regresiva",
+      "Cuándo y dónde",
+      "Confirmación de asistencia",
+      "Sugerencias de regalos",
+      "Información importante para mascotas"
+    ],
+    demoLink: "/demo/mascota/perro/basic",
+    popular: false
+  },
+  {
+    id: "mascota-gato-premium",
+    categoryId: "mascotas",
+    name: "Cumpleaños Felino Premium",
+    description: "Celebración elegante y sofisticada para tu compañero gatuno",
+    image: "/images/pets/cats/cat_3.jpeg",
+    packageType: "premium",
+    price: "$499",
+    features: [
+      "Todo del Básico",
+      "Música personalizable",
+      "Galería interactiva",
+      "Línea de tiempo de recuerdos",
+      "Perfil de personalidad",
+      "Registro de regalos"
+    ],
+    demoLink: "/demo/mascota/gato/premium",
+    popular: true
+  },
+  {
+    id: "mascota-perro-gato-vip",
+    categoryId: "mascotas",
+    name: "Celebración VIP Perros & Gatos",
+    description: "Experiencia exclusiva y sofisticada para celebrar a tus compañeros peludos juntos",
+    image: "/images/pets/dogs-cats/cat_dog_2.jpeg",
+    packageType: "vip",
+    price: "$699",
+    features: [
+      "Todo de los paquetes Premium",
+      "Hospedaje para mascotas invitadas",
+      "Itinerario completo para el evento",
+      "Equipo de cuidadores profesionales",
+      "Múltiples playlists temáticas",
+      "Galería avanzada categorizada",
+      "Experiencia interactiva completa"
+    ],
+    demoLink: "/demo/mascota/vip",
+    popular: true
+  },
+  
   // TRABAJOS RECIENTES (destacados)
   {
     id: "reciente-quince-basico",
