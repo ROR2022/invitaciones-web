@@ -7,7 +7,7 @@ import { catBirthdayPremiumData } from './data/premium-demo-data'
 
 export function CatHero() {
   const { cat, event } = catBirthdayPremiumData
-  const { isPlaying, setIsPlaying, setCurrentTrack, setTracksCount } = useMusicContext()
+  const { isPlaying, setIsPlaying } = useMusicContext()
   const [scrollY, setScrollY] = useState(0)
   
   // Efecto de parallax al hacer scroll
@@ -22,16 +22,12 @@ export function CatHero() {
     }
   }, [])
 
-  // Configurar el reproductor de música
+  // Configurar autoplay de música (simplificado)
   useEffect(() => {
-    if (catBirthdayPremiumData.music.tracks.length > 0 && setTracksCount) {
-      setTracksCount(catBirthdayPremiumData.music.tracks.length)
-      setCurrentTrack(catBirthdayPremiumData.music.defaultTrack)
-      if (catBirthdayPremiumData.music.autoplay) {
-        setIsPlaying(true)
-      }
+    if (catBirthdayPremiumData.music.autoplay) {
+      setIsPlaying(true)
     }
-  }, [setTracksCount, setCurrentTrack, setIsPlaying])
+  }, [setIsPlaying])
 
   // Formato de la fecha
   const eventDate = new Date(event.date)
@@ -143,15 +139,7 @@ export function CatHero() {
           </div>
         </div>
         
-        {/* CTA Primario */}
-        <div 
-          className="mt-10 animate-fade-in-up"
-          style={{ animationDelay: '0.8s' }}
-        >
-          <button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105">
-            Confirmar Asistencia
-          </button>
-        </div>
+       
 
         {/* Indicador de música */}
         <div 

@@ -101,13 +101,28 @@ export const catBirthdayPremiumData = {
     rsvp_deadline: "2025-10-15T23:59:59"
   },
   music: {
-    track: {
-      title: "Melodía para Luna",
-      file: "/music/fairy-tale1.mp3",
-      artist: "Cat Tunes",
-      duration: "2:35"
-    },
-    autoplay: false
+    tracks: [
+      {
+        title: "Melodía Felina",
+        file: "/music/fairy-tale1.mp3",
+        artist: "Cat Tunes",
+        duration: "2:35"
+      },
+      {
+        title: "Ronroneo Relajante",
+        file: "/music/calm-emotional-cello-main1.mp3",
+        artist: "Purr Masters",
+        duration: "1:58"
+      },
+      {
+        title: "Celebración Gatuna",
+        file: "/music/feel-good1.mp3", 
+        artist: "The Whiskered Ones",
+        duration: "3:12"
+      }
+    ],
+    autoplay: true,
+    defaultTrack: 0
   },
   memories: [
     {
