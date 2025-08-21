@@ -22,7 +22,7 @@ export interface CatalogProduct {
   name: string
   description: string
   image: string
-  packageType: 'basico' | 'premium' | 'vip'
+  packageType: 'basico' | 'premium' | 'vip' | 'express'
   price: string
   features: string[]
   demoLink: string
@@ -121,13 +121,26 @@ export const catalogCategories: CatalogCategory[] = [
     featured: true,
     color: "amber",
     gradient: "from-amber-500 to-orange-500"
+  },
+  {
+    id: "express",
+    name: "Invitaciones Express",
+    icon: "⚡",
+    description: "Invitaciones digitales listas en minutos",
+    images: [
+      "/images/express/express1.jpeg",
+      "/images/express/express2.jpeg",
+      "/images/express/express3.jpeg"
+    ],
+    demoLink: "/demo/express",
+    color: "indigo",
+    gradient: "from-indigo-500 to-purple-500"
   }
 ]
 
-// Productos del catálogo basados en paquetes existentes
-export const catalogProducts: CatalogProduct[] = [
-  // BODAS
-  {
+//Bodas 
+const bodas: CatalogProduct[]= [
+{
     id: "boda-basico",
     categoryId: "bodas", 
     name: "Boda Básica",
@@ -179,9 +192,10 @@ export const catalogProducts: CatalogProduct[] = [
     ],
     demoLink: "/demo/boda/vip"
   },
-
-  // XV AÑOS
-  {
+]
+//XV AÑOS
+const quinces: CatalogProduct[]= [
+   {
     id: "quince-basico",
     categoryId: "quince",
     name: "XV Años Básico",
@@ -234,8 +248,10 @@ export const catalogProducts: CatalogProduct[] = [
     demoLink: "/demo/quince/vip"
   },
 
-  // BAUTIZOS
-  {
+]
+// Bautizos
+const bautizos: CatalogProduct[]= [
+{
     id: "bautizo-basico",
     categoryId: "bautizos",
     name: "Bautizo Básico",
@@ -287,9 +303,10 @@ export const catalogProducts: CatalogProduct[] = [
     ],
     demoLink: "/demo/bautizo/vip"
   },
+]
 
-  // CUMPLEAÑOS INFANTILES
-  {
+const cumples: CatalogProduct[]= [
+{
     id: "cumpleanos-basico",
     categoryId: "cumpleanos-infantiles",
     name: "Cumpleaños Vaqueros",
@@ -341,9 +358,10 @@ export const catalogProducts: CatalogProduct[] = [
     ],
     demoLink: "/demo/cumpleanos/vip"
   },
+]
 
-  // MASCOTAS
-  {
+const mascotas: CatalogProduct[]= [
+{
     id: "mascota-perro-basico",
     categoryId: "mascotas",
     name: "Cumpleaños de Lomito",
@@ -400,9 +418,10 @@ export const catalogProducts: CatalogProduct[] = [
     demoLink: "/demo/mascota/vip",
     popular: true
   },
-  
-  // TRABAJOS RECIENTES (destacados)
-  {
+]
+
+const recientes: CatalogProduct[]= [
+{
     id: "reciente-quince-basico",
     categoryId: "recientes",
     name: "XV Años Joanny Valeria",
@@ -519,7 +538,109 @@ export const catalogProducts: CatalogProduct[] = [
     ],
     demoLink: "https://cumple-premium-lluvia-marina.vercel.app/",
     popular: true
+  },
+]
+
+const express: CatalogProduct[]= [
+  {
+    id: "express-boda",
+    categoryId: "express",
+    name: "Invitacion Boda Express",
+    description: "Invitación digital lista en minutos",
+    image: "/images/boda/boda8.jpeg",
+    packageType: "express",
+    price: "$149",
+    features: [
+      "Diseño rápido",
+      "Personalización básica",
+      "Envío digital"
+    ],
+    demoLink: "/demo/invitaciones-express/boda"
+  },
+  {
+    id: "express-quince",
+    categoryId: "express",
+    name: "Invitacion Quinceañera Express",
+    description: "Invitación digital lista en minutos",
+    image: "/images/quince/quince4.jpeg",
+    packageType: "express",
+    price: "$149",
+    features: [
+      "Diseño rápido",
+      "Personalización básica",
+      "Envío digital"
+    ],
+    demoLink: "/demo/invitaciones-express/quince"
+  },
+  {
+    id: "express-bautizo",
+    categoryId: "express",
+    name: "Invitacion Bautizo Express",
+    description: "Invitación digital lista en minutos",
+    image: "/images/bautizo/bautizo4.jpeg",
+    packageType: "express",
+    price: "$149",
+    features: [
+      "Diseño rápido",
+      "Personalización básica",
+      "Envío digital"
+    ],
+    demoLink: "/demo/invitaciones-express/bautizo"
+  },
+  {
+    id: "express-cumpleanos",
+    categoryId: "express",
+    name: "Invitacion Cumpleaños Express",
+    description: "Invitación digital lista en minutos",
+    image: "/images/cumple/vaqueros/vaqueros4.png",
+    packageType: "express",
+    price: "$149",
+    features: [
+      "Diseño rápido",
+      "Personalización básica",
+      "Envío digital"
+    ],
+    demoLink: "/demo/invitaciones-express/cumple"
+  },
+  {
+    id: "express-mascota",
+    categoryId: "express",
+    name: "Invitacion Mascota Express",
+    description: "Invitación digital lista en minutos",
+    image: "/images/pets/dogs/dog_2.jpeg",
+    packageType: "express",
+    price: "$149",
+    features: [
+      "Diseño rápido",
+      "Personalización básica",
+      "Envío digital"
+    ],
+    demoLink: "/demo/invitaciones-express/mascota"
   }
+]
+
+// Productos del catálogo basados en paquetes existentes
+export const catalogProducts: CatalogProduct[] = [
+  // BODAS
+  ...bodas,
+
+  // XV AÑOS
+  ...quinces,
+
+  // BAUTIZOS
+  ...bautizos,
+
+  // CUMPLEAÑOS INFANTILES
+  ...cumples,
+
+  // MASCOTAS
+  ...mascotas,
+
+  // TRABAJOS RECIENTES (destacados)
+  ...recientes,
+
+  //Invitaciones Express
+  ...express
 ]
 
 // Información de paquetes (reutilizar datos existentes)

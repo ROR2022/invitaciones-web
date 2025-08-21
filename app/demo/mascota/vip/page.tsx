@@ -49,6 +49,7 @@ export default function MascotaVipPage() {
           <span className="sm:hidden">Catalogo</span>
         </div>
       </Link>
+      
         {/* Componente de audio invisible */}
         <AudioElement />
         
