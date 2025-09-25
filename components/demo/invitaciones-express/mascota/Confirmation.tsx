@@ -10,7 +10,7 @@ const Confirmation = () => {
     const handleConfirm = () => {
         const confirmationNumber = dataMascotaExpress.confirmationNumber;
         // aqui se crea el mensaje
-        const message = `¡Gracias por confirmar tu asistencia a la fiesta de cumpleaños de ${dataMascotaExpress.groom}!
+        const message = `¡Gracias por confirmar tu asistencia a la fiesta de ${dataMascotaExpress.groom}!
         Detalles de la fiesta:
         Fecha: ${dataMascotaExpress.date}
         Hora: ${dataMascotaExpress.ceremonyTime}

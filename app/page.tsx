@@ -4,7 +4,8 @@ import {
   PricingSection, 
   ComparisonTable, 
   CTASection, 
-  Footer 
+  Footer,
+  Socials 
 } from "@/components/landing"
 import Link from "next/link"
 
@@ -12,6 +13,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
       <HeroSection />
+      <Socials />
       <div className="flex justify-center">
         {/* TODO: Add a button to the catalog page */}
         <Link 

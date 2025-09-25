@@ -6,6 +6,7 @@ export { PricingSection } from "./PricingSection"
 export { ComparisonTable } from "./ComparisonTable"
 export { CTASection } from "./CTASection"
 export { Footer } from "./Footer"
+export { Socials } from "./Socials"
 
 // Hooks útiles
 export { useIsClient } from "@/hooks/useIsClient"
